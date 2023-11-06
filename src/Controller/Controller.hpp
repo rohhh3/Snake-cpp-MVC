@@ -4,10 +4,13 @@
 
 namespace Controller
 {
-    Model::ScoreboardEntry getScoreboardEntry(uint16_t id); //indeks elementu w wektorze
-    void addScoreboardEntry(std::string player_name, int32_t score);
-    bool doesScoreQualify(int32_t score);
     void initGame(); //ma ladowac wyniki z pliku, ustawiac zmiennym z MODELU wartosci poczatkowe
-    Model::ESection getCurrentSection();
+
+    bool doesScoreQualify(int32_t score);
+    void addScoreboardEntry(std::string player_name, int32_t score);
+    Model::ScoreboardEntry getScoreboardEntry(uint16_t id); //indeks elementu w wektorze
+
     void setSection(Model::ESection section);
+    Model::ESection getCurrentSection();
+
 }

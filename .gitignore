@@ -34,5 +34,6 @@
 # specific to CodeBlocks IDE
 *.layout
 *.depend
+*.cbp
 bin/
 obj/
