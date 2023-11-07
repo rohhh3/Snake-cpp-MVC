@@ -3,5 +3,4 @@
 namespace Model
 {
     std::vector<ScoreboardEntry> scoreboard;
-    ESection section;
 }
