@@ -26,6 +26,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-DNDEBUG" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -39,13 +40,20 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Controller/Controller.cpp" />
 		<Unit filename="src/Controller/Controller.hpp" />
-		<Unit filename="src/Model/ESection.hpp" />
+		<Unit filename="src/Controller/ScoreboardController.cpp" />
 		<Unit filename="src/Model/ModelCore.cpp" />
 		<Unit filename="src/Model/ModelCore.hpp" />
 		<Unit filename="src/Model/ScoreboardEntry.hpp" />
 		<Unit filename="src/Model/Snake.cpp" />
 		<Unit filename="src/Model/Snake.hpp" />
+		<Unit filename="src/Model/typedefs.hpp" />
 		<Unit filename="src/View/ConsoleInit.hpp" />
+		<Unit filename="src/View/ESection.hpp" />
+		<Unit filename="src/View/Sections/Gameplay.hpp" />
+		<Unit filename="src/View/Sections/Help.hpp" />
+		<Unit filename="src/View/Sections/MainMenu.hpp" />
+		<Unit filename="src/View/Sections/NewGame.hpp" />
+		<Unit filename="src/View/Sections/Scores.hpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
