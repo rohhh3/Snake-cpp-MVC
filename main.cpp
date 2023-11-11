@@ -6,6 +6,7 @@
 #include "src/View/Sections/NewGame.hpp"
 #include "src/View/Sections/Scores.hpp"
 #include "src/Model/ModelCore.hpp"
+#include "src/View/Section.hpp"
 #include <iostream>
 
 int main()
@@ -13,19 +14,22 @@ int main()
     Controller::initGame();
     View::console_init();
 
-    View::ESection current_section = View::MAIN_MENU; //inicjalizacja koncepcji sekcji
+    View::Section* current_section;
+    uint8_t code = 1;
 
-    while(current_section != View::EXIT)
+    while(code)
     {
-        switch(current_section)
+        switch(code)
         {
-            case View::MAIN_MENU: { current_section = View::executeMainMenu(); break; }
-            case View::NEW_GAME:  { current_section = View::executeNewGame();  break; }
-            case View::GAMEPLAY:  { current_section = View::executeGameplay(); break; }
-            case View::SCORES:    { current_section = View::executeScores();   break; }
-            case View::HELP:      { current_section = View::executeHelp();     break; }
+            case View::MAIN_MENU: { current_section = new View::MainMenu; break; }
+            case View::NEW_GAME:  { current_section = new View::NewGame;  break; }
+            case View::GAMEPLAY:  { current_section = new View::Gameplay; break; }
+            case View::SCORES:    { current_section = new View::Scores;    break; }
+            case View::HELP:      { current_section = new View::Help;     break; }
             default: break;
         }
+        code = current_section->execute();
+        delete current_section;
     }
 
 /*

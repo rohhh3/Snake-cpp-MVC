@@ -1,8 +1,12 @@
 #pragma once
 #include "../ESection.hpp"
 #include "../resources.hpp"
-
+#include "../Section.hpp"
 namespace View
 {
-    ESection executeMainMenu();
+    class MainMenu : public Section
+    {
+        public:
+            ESection execute();
+    };
 }

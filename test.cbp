@@ -49,12 +49,18 @@
 		<Unit filename="src/Model/typedefs.hpp" />
 		<Unit filename="src/View/ConsoleInit.hpp" />
 		<Unit filename="src/View/ESection.hpp" />
+		<Unit filename="src/View/Section.hpp" />
+		<Unit filename="src/View/Sections/Gameplay.cpp" />
 		<Unit filename="src/View/Sections/Gameplay.hpp" />
+		<Unit filename="src/View/Sections/Help.cpp" />
 		<Unit filename="src/View/Sections/Help.hpp" />
+		<Unit filename="src/View/Sections/MainMenu.cpp" />
 		<Unit filename="src/View/Sections/MainMenu.hpp" />
+		<Unit filename="src/View/Sections/NewGame.cpp" />
 		<Unit filename="src/View/Sections/NewGame.hpp" />
 		<Unit filename="src/View/Sections/Scores.cpp" />
 		<Unit filename="src/View/Sections/Scores.hpp" />
+		<Unit filename="src/View/resources.hpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

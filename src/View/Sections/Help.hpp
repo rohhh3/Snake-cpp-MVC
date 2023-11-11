@@ -1,7 +1,12 @@
 #pragma once
 #include "../ESection.hpp"
 #include "../resources.hpp"
+#include "../Section.hpp"
 namespace View
 {
-    ESection executeHelp();
+    class Help : public Section
+    {
+        public:
+            ESection execute();
+    };
 }
