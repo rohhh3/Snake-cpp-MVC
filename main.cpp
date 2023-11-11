@@ -32,6 +32,7 @@ int main()
         delete current_section;
     }
 
+
 /*
     Controller::addScoreboardEntry("Alice", 100);
     Controller::addScoreboardEntry("Bob", 80);
