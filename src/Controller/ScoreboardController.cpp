@@ -1,14 +1,12 @@
 #include "Controller.hpp"
-#include "../Model/typedefs.hpp"
 #include <cassert>
 #include <iostream>
+#include <sstream>
 #include <fstream>
-
-using namespace N1;
 
 namespace Controller
 {
-    bool doesScoreQualify(scoreInt fresh_score)
+    bool doesScoreQualify(Model::scoreInt fresh_score)
     {
         if(
            Model::scoreboard.empty() ||
@@ -19,7 +17,7 @@ namespace Controller
         return false;
     }
 
-    void addScoreboardEntry(std::string player_name, scoreInt fresh_score)
+    void addScoreboardEntry(std::string player_name, Model::scoreInt fresh_score)
     {
         if(!doesScoreQualify(fresh_score))
             return;
@@ -49,6 +47,35 @@ namespace Controller
         Model::scoreboard.emplace(Model::scoreboard.begin() + insert_position, player_name, fresh_score);
     }
 
+    void loadScoreboard()
+    {
+        Model::scoreboard.clear();
+
+        std::ifstream file(Model::file_path);
+
+        if(!file.is_open())
+        {
+            std::cerr << "Error: Unable to open the scoreboard file." << std::endl;
+            return;
+        }
+
+        std::string line;
+
+        while(std::getline(file, line))
+        {
+            std::istringstream iss(line);
+            std::string name;
+            int score;
+
+            if(std::getline(iss, name, ',') && iss >> score)
+                Model::scoreboard.emplace_back(name, static_cast<Model::scoreInt>(score));
+            else
+                std::cerr << "Error: Invalid line format in the scoreboard file." << std::endl;
+        }
+
+        file.close();
+    }
+
     void saveScoreboard()
     {
         std::ofstream file(Model::file_path);
@@ -68,4 +95,10 @@ namespace Controller
         assert(id < Model::scoreboard.size());
         return Model::scoreboard[id];
     }
+
+    uint16_t getScoreboardSize()
+    {
+        return Model::scoreboard.size();
+    }
+
 }

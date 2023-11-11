@@ -1,9 +1,7 @@
 #pragma once
+#include "typedefs.hpp"
 #include <cstdint>
 #include <string>
-#include "../Model/typedefs.hpp"
-
-using namespace N1;
 
 namespace Model
 {

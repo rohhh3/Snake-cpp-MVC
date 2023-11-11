@@ -4,7 +4,7 @@ namespace Controller
 {
     void initGame()
     {
-
+        loadScoreboard();
     }
 }
 

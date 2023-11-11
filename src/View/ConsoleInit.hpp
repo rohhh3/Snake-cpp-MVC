@@ -1,21 +1,20 @@
 #pragma once
 #include <windows.h>
+#include "resources.hpp"
 
 namespace View
 {
     void console_init()
     {
-        const unsigned short WIDTH  = 120;
-        const unsigned short HEIGHT = 60;
         _COORD coord;
         _SMALL_RECT rect;
+        coord.X = CONSOLE_WIDTH;
+        coord.Y = CONSOLE_HEIGHT;
 
-        coord.X = WIDTH;
-        coord.Y = HEIGHT;
         rect.Top  = 0;
         rect.Left = 0;
-        rect.Right  = WIDTH - 1;
-        rect.Bottom = HEIGHT - 1;
+        rect.Right  = CONSOLE_WIDTH - 1;
+        rect.Bottom = CONSOLE_HEIGHT - 1;
 
         HWND consoleWindow = GetConsoleWindow();
         LONG style         = GetWindowLong(consoleWindow, GWL_STYLE);
