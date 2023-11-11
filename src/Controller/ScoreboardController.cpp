@@ -49,6 +49,20 @@ namespace Controller
         Model::scoreboard.emplace(Model::scoreboard.begin() + insert_position, player_name, fresh_score);
     }
 
+    void saveScoreboard()
+    {
+        std::ofstream file(Model::file_path);
+
+        if(!file.is_open())
+        {
+            for(auto& i: Model::scoreboard)
+                file << i.name << "," << i.score << "\n";
+            file.close();
+        }
+        std::cerr << "Failed to open file: " << Model::file_path;
+
+    }
+
     Model::ScoreboardEntry getScoreboardEntry(uint16_t id)
     {
         assert(id < Model::scoreboard.size());

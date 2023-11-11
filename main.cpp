@@ -5,6 +5,7 @@
 #include "src/View/Sections/MainMenu.hpp"
 #include "src/View/Sections/NewGame.hpp"
 #include "src/View/Sections/Scores.hpp"
+#include "src/Model/ModelCore.hpp"
 #include <iostream>
 
 int main()
@@ -14,6 +15,8 @@ int main()
     View::parseScores();
     for(const Model::ScoreboardEntry& entry : Model::scoreboard)
         std::cout << entry.name << ": " << entry.score << std::endl;
+
+
 /*
     View::ESection current_section = View::MAIN_MENU; //inicjalizacja koncepcji sekcji
 
@@ -30,8 +33,6 @@ int main()
         }
     }
 
-*/
-/*
 
     Controller::addScoreboardEntry("Alice", 100);
     Controller::addScoreboardEntry("Bob", 80);
@@ -47,9 +48,8 @@ int main()
 
     Model::ScoreboardEntry entry = Controller::getScoreboardEntry(2);
     std::cout << entry.name << entry.score;
-
 */
-
 
     return 0;
 }
+
