@@ -1,10 +1,14 @@
 #include "Controller.hpp"
+#include "../Model/typedefs.hpp"
 #include <cassert>
 #include <iostream>
+#include <fstream>
+
+using namespace N1;
 
 namespace Controller
 {
-    bool doesScoreQualify(int32_t fresh_score)
+    bool doesScoreQualify(scoreInt fresh_score)
     {
         if(
            Model::scoreboard.empty() ||
@@ -15,7 +19,7 @@ namespace Controller
         return false;
     }
 
-    void addScoreboardEntry(std::string player_name, int32_t fresh_score)
+    void addScoreboardEntry(std::string player_name, scoreInt fresh_score)
     {
         if(!doesScoreQualify(fresh_score))
             return;
@@ -23,7 +27,7 @@ namespace Controller
         // Binary insertion sort in descending order
         int16_t low            = 0;
         int16_t high           = Model::scoreboard.size() - 1;
-        int16_t insertPosition = -1;
+        int16_t insert_position = -1;
 
         while(low <= high)
         {
@@ -34,16 +38,15 @@ namespace Controller
                 high = mid - 1;
             else
             {
-                insertPosition = mid;
+                insert_position = mid;
                 break;
             }
         }
 
-        if (insertPosition == -1)
-            insertPosition = low; // If not found, insert after the closest lower score
+        if (insert_position == -1)
+            insert_position = low; // If not found, insert after the closest lower score
 
-
-        Model::scoreboard.emplace(Model::scoreboard.begin() + insertPosition, player_name, fresh_score);
+        Model::scoreboard.emplace(Model::scoreboard.begin() + insert_position, player_name, fresh_score);
     }
 
     Model::ScoreboardEntry getScoreboardEntry(uint16_t id)

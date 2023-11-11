@@ -11,7 +11,10 @@ int main()
 {
     Controller::initGame();
     View::console_init();
-
+    View::parseScores();
+    for(const Model::ScoreboardEntry& entry : Model::scoreboard)
+        std::cout << entry.name << ": " << entry.score << std::endl;
+/*
     View::ESection current_section = View::MAIN_MENU; //inicjalizacja koncepcji sekcji
 
     while(current_section != View::EXIT)
@@ -27,9 +30,8 @@ int main()
         }
     }
 
-
-
-    /*TESTY FUNKCJI SCOREBOARD
+*/
+/*
 
     Controller::addScoreboardEntry("Alice", 100);
     Controller::addScoreboardEntry("Bob", 80);
@@ -45,8 +47,8 @@ int main()
 
     Model::ScoreboardEntry entry = Controller::getScoreboardEntry(2);
     std::cout << entry.name << entry.score;
-    */
 
+*/
 
 
     return 0;

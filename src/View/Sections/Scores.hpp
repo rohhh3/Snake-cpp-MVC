@@ -1,10 +1,9 @@
 #pragma once
 #include "../ESection.hpp"
-#include <iostream>
+#include "../../Controller/Controller.hpp"
+
 namespace View
 {
-    ESection executeScores()
-    {
-        return EXIT;
-    }
+    void     parseScores();
+    ESection executeScores();
 }

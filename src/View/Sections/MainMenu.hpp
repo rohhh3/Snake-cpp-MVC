@@ -3,27 +3,29 @@
 #include <iostream>
 #include <string>
 #include <conio.h>
+#include <windows.h>
 
 
 namespace View
 {
     ESection executeMainMenu()
     {
-        std::string menu_items[] = {"New Game", "Scores", "Help", "Exit"};
-        HANDLE handle_console = GetStdHandle(STD_OUTPUT_HANDLE);
+        std::string menu_items[]      = {"New Game", "Scores", "Help", "Exit"};
+        HANDLE      handle_console    = GetStdHandle(STD_OUTPUT_HANDLE);
+        std::string title             = "\r\n ________   ________    ________   ___  __     _______           ________   ________   _____ ______    _______      \r\n|\\   ____\\ |\\   ___  \\ |\\   __  \\ |\\  \\|\\  \\  |\\  ___ \\         |\\   ____\\ |\\   __  \\ |\\   _ \\  _   \\ |\\  ___ \\     \r\n\\ \\  \\___|_\\ \\  \\\\ \\  \\\\ \\  \\|\\  \\\\ \\  \\/  /|_\\ \\   __/|        \\ \\  \\___| \\ \\  \\|\\  \\\\ \\  \\\\\\__\\ \\  \\\\ \\   __/|    \r\n \\ \\_____  \\\\ \\  \\\\ \\  \\\\ \\   __  \\\\ \\   ___  \\\\ \\  \\_|/__       \\ \\  \\  ___\\ \\   __  \\\\ \\  \\\\|__| \\  \\\\ \\  \\_|/__  \r\n  \\|____|\\  \\\\ \\__\\\\ \\__\\\\ \\__\\ \\__\\\\ \\__\\\\ \\__\\\\ \\_______\\       \\ \\_______\\\\ \\__\\ \\__\\\\ \\__\\    \\ \\__\\\\ \\_______\\\r\n   |\\_________\\\\|__|\\|__|\\|__|\\|__| \\|__| \\|__| \\|_______|        \\|_______| \\|__|\\|__| \\|__|     \\|__| \\|_______|\r\n   \\|_________|                                                                                                     \r\n                                                                                                                    \r\n                                                                                                                    \r\n";
 
-        SetConsoleTextAttribute(handle_console, 2); // set green color
+        int  option_index   = 0;
+        int  console_width  = 120;
+        bool isSelected     = false;
 
-        // Main title
-        std::cout << "\r\n ________   ________    ________   ___  __     _______           ________   ________   _____ ______    _______      \r\n|\\   ____\\ |\\   ___  \\ |\\   __  \\ |\\  \\|\\  \\  |\\  ___ \\         |\\   ____\\ |\\   __  \\ |\\   _ \\  _   \\ |\\  ___ \\     \r\n\\ \\  \\___|_\\ \\  \\\\ \\  \\\\ \\  \\|\\  \\\\ \\  \\/  /|_\\ \\   __/|        \\ \\  \\___| \\ \\  \\|\\  \\\\ \\  \\\\\\__\\ \\  \\\\ \\   __/|    \r\n \\ \\_____  \\\\ \\  \\\\ \\  \\\\ \\   __  \\\\ \\   ___  \\\\ \\  \\_|/__       \\ \\  \\  ___\\ \\   __  \\\\ \\  \\\\|__| \\  \\\\ \\  \\_|/__  \r\n  \\|____|\\  \\\\ \\__\\\\ \\__\\\\ \\__\\ \\__\\\\ \\__\\\\ \\__\\\\ \\_______\\       \\ \\_______\\\\ \\__\\ \\__\\\\ \\__\\    \\ \\__\\\\ \\_______\\\r\n   |\\_________\\\\|__|\\|__|\\|__|\\|__| \\|__| \\|__| \\|_______|        \\|_______| \\|__|\\|__| \\|__|     \\|__| \\|_______|\r\n   \\|_________|                                                                                                     \r\n                                                                                                                    \r\n                                                                                                                    \r\n";
-
-        SetConsoleTextAttribute(handle_console, 7); // back to default color
-
-        int option_index = 0;
-        int console_width  = 120;
-        bool isSelected = false;
         while(!isSelected)
         {
+            SetConsoleTextAttribute(handle_console, 2); // set green color
+
+            std::cout << title;
+
+            SetConsoleTextAttribute(handle_console, 7); // back to default color
+
             for(int i = 0; i < 4; ++i)
             {
                 int padding = (console_width - menu_items[i].length()) / 2;
@@ -41,7 +43,7 @@ namespace View
             switch(key)
             {
                 case 72: //up arrow key
-                    option_index = (option_index == 3 ? 0 : option_index - 1);
+                    option_index = (option_index == 0 ? 3 : option_index - 1);
                     break;
                 case 80: // Down arrow
                     option_index = (option_index == 3 ? 0 : option_index + 1);
@@ -50,12 +52,13 @@ namespace View
                     isSelected = true;
                     break;
             }
+            system("cls");
         }
-        system("cls");
+
         switch(option_index)
         {
             case 0:
-                return GAMEPLAY;
+                return NEW_GAME;
                 break;
             case 1:
                 return SCORES;

@@ -53,6 +53,7 @@
 		<Unit filename="src/View/Sections/Help.hpp" />
 		<Unit filename="src/View/Sections/MainMenu.hpp" />
 		<Unit filename="src/View/Sections/NewGame.hpp" />
+		<Unit filename="src/View/Sections/Scores.cpp" />
 		<Unit filename="src/View/Sections/Scores.hpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
