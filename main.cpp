@@ -14,22 +14,22 @@ int main()
     Controller::initGame();
     View::console_init();
 
-    View::Section* current_section;
-    uint8_t code = 1;
+    View::Section* current_section_object;
+    View::ESection current_section = View::MAIN_MENU;
 
-    while(code)
+    while(current_section)
     {
-        switch(code)
+        switch(current_section)
         {
-            case View::MAIN_MENU: { current_section = new View::MainMenu; break; }
-            case View::NEW_GAME:  { current_section = new View::NewGame;  break; }
-            case View::GAMEPLAY:  { current_section = new View::Gameplay; break; }
-            case View::SCORES:    { current_section = new View::Scores;    break; }
-            case View::HELP:      { current_section = new View::Help;     break; }
+            case View::MAIN_MENU: { current_section_object = new View::MainMenu; break; }
+            case View::NEW_GAME:  { current_section_object = new View::NewGame;  break; }
+            case View::GAMEPLAY:  { current_section_object = new View::Gameplay; break; }
+            case View::SCORES:    { current_section_object = new View::Scores;   break; }
+            case View::HELP:      { current_section_object = new View::Help;     break; }
             default: break;
         }
-        code = current_section->execute();
-        delete current_section;
+        current_section = current_section_object->execute();
+        delete current_section_object;
     }
 
 

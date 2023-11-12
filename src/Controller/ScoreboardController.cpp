@@ -23,8 +23,8 @@ namespace Controller
             return;
 
         // Binary insertion sort in descending order
-        int16_t low            = 0;
-        int16_t high           = Model::scoreboard.size() - 1;
+        int16_t low             = 0;
+        int16_t high            = Model::scoreboard.size() - 1;
         int16_t insert_position = -1;
 
         while(low <= high)

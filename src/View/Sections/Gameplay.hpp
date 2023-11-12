@@ -8,5 +8,7 @@ namespace View
     {
         public:
             ESection execute();
+            Gameplay();
+            ~Gameplay();
     };
 }

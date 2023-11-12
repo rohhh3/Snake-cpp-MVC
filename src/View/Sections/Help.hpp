@@ -8,5 +8,8 @@ namespace View
     {
         public:
             ESection execute();
+            Help();
+            ~Help();
+
     };
 }

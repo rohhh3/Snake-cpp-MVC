@@ -6,6 +6,13 @@
 
 namespace View
 {
+    MainMenu::MainMenu()
+    {
+
+    }
+
+    MainMenu::~MainMenu(){ }
+
     ESection MainMenu::execute()
     {
         std::string menu_items[] = {"New Game", "Scores", "Help", "Exit"};

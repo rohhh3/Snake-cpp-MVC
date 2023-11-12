@@ -1,3 +1,0 @@
-Charlie,120
-Alice,100
-siema,5

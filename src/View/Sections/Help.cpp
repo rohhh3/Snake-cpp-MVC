@@ -4,6 +4,13 @@
 #include <conio.h>
 namespace View
 {
+    Help::Help()
+    {
+
+    }
+
+    Help::~Help(){ }
+
     ESection Help::execute()
     {
         SetConsoleTextAttribute(handle_console, 2); // set green color

@@ -4,6 +4,13 @@
 #include <conio.h>
 namespace View
 {
+    NewGame::NewGame()
+    {
+
+    }
+
+    NewGame::~NewGame(){ }
+
     ESection NewGame::execute()
     {
         char userInput = 0;
