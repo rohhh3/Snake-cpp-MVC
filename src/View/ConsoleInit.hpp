@@ -3,6 +3,6 @@
 
 namespace View
 {
-    void console_init();
+    void consoleInit();
 }
 

@@ -3,7 +3,13 @@
 #include "../Section.hpp"
 #include "../../Model/ModelCore.hpp"
 #include <iostream>
+#include <iomanip>
 #include <conio.h>
+#include <windows.h>
+
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
+
 
 namespace View
 {
@@ -26,10 +32,10 @@ namespace View
     void Scores::updateScoresOnCurrentPage()
     {
         if(Controller::getScoreboardSize() == 0)
-            scores_on_current_page = 0;
+            number_of_scores_on_current_page = 0;
         else
         {
-            scores_on_current_page = (current_page == total_pages)
+            number_of_scores_on_current_page = (current_page == total_pages)
                 ? ((int16_t)(Controller::getScoreboardSize() - 1) % MAX_ELEMENTS_ON_PAGE) + 1
                 : MAX_ELEMENTS_ON_PAGE;
         }
@@ -38,55 +44,91 @@ namespace View
     void Scores::updateVisibleScores()
     {
         scores_on_page.clear();
-        for(uint16_t i = 0; i < scores_on_current_page; i++)
+        for(uint16_t i = 0; i < number_of_scores_on_current_page; i++)
             scores_on_page.push_back(Controller::getScoreboardEntry((current_page * MAX_ELEMENTS_ON_PAGE) + i));
     }
 
     ESection Scores::execute()
     {
-        SetConsoleTextAttribute(handle_console, 2); // set green color
-        std::cout << title;
-        SetConsoleTextAttribute(handle_console, 7); // back to default color
+        char user_input = 0;
 
-        for(int i = 0; i < CONSOLE_WIDTH; i++)
-            std::cout << "-";
-        std::cout << std::endl;
-
-        printSpace(11);
-        std::cout << "High Scores" << std::endl;
-        for(int i = 0; i < CONSOLE_WIDTH; i++)
-            std::cout << "-";
-        std::cout << std::endl;
-
-        if(scores_on_current_page == 0)
+        if(number_of_scores_on_current_page == 0)
         {
-            printSpace(13);
+            printHeader();
+
+            for(int i = 0; i < CONSOLE_WIDTH; i++)
+                std::cout << "-";
+            std::cout << std::endl;
+
+            centerStringX(11);
+            std::cout << "High Scores" << std::endl;
+            for(int i = 0; i < CONSOLE_WIDTH; i++)
+                std::cout << "-";
+            std::cout << std::endl;
+
+            centerStringX(13);
             std::cout << "No scores yet" << std::endl;
 
-            char userInput = 0;
-            while(userInput != '\b')
-                userInput = _getch();
-
-            system("cls");
-            return MAIN_MENU;
+            user_input = 0;
+            while(user_input != '\b')
+                user_input = _getch();
         }
 
         else
         {
-            updateVisibleScores();
+            bool backspace_pressed = false;
+            while(!backspace_pressed)
+            {
+                system("cls");
+                updatePage();
+                printHeader();
 
-            for(auto& i : scores_on_page)
-                std::cout << i.name << " " << i.score << std::endl;
+                /* \/ \/ \/ HIGH SCORES \/\/\/ */
+                for(int i = 0; i < CONSOLE_WIDTH; i++)
+                    std::cout << "-";
+                std::cout << std::endl;
 
-            printSpace(3);
-            std::cout << current_page + 1 << "/" << total_pages + 1 << std::endl;
+                centerStringX(11);
+                std::cout << "High Scores" << std::endl;
+                for(int i = 0; i < CONSOLE_WIDTH; i++)
+                    std::cout << "-";
+                std::cout << std::endl;
+                /* \/ \/ \/ HIGH SCORES \/\/\/ */
 
-            char userInput = 0;
-            while(userInput != '\b')
-                userInput = _getch();
+                for(auto& i : scores_on_page)
+                    std::cout << std::left << std::setw(20) << i.name << std::setw(10) << i.score << std::endl;
 
-            system("cls");
-            return MAIN_MENU;
+                setCursorPosition((CONSOLE_WIDTH / 2 ) - 4, 25);
+                std::cout << "< " << current_page + 1 << "/" << total_pages + 1 << " >" << std::endl;
+
+                user_input = _getch();
+                if(user_input != '\b')
+                {
+                    switch(user_input)
+                    {
+                        case KEY_RIGHT:
+                        {
+                            current_page += 1;
+                            if(current_page > total_pages)
+                                current_page = 0;
+                            break;
+                        }
+
+                        case KEY_LEFT:
+                        {
+                            current_page -= 1;
+                            if(current_page < 0)
+                                current_page = total_pages;
+                            break;
+                        }
+                    }
+                }
+                else
+                    backspace_pressed = true;
+            }
         }
+
+        system("cls");
+        return MAIN_MENU;
     }
 }

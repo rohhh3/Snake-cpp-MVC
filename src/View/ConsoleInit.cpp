@@ -3,7 +3,7 @@
 
 namespace View
 {
-    void console_init()
+    void consoleInit()
     {
         _COORD coord;
         _SMALL_RECT rect;
@@ -20,9 +20,8 @@ namespace View
         style &= ~WS_SIZEBOX;      // Disable resizing
         style &= ~WS_MAXIMIZEBOX;  // Disable maximize button
 
-        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-        SetConsoleScreenBufferSize(handle, coord);
-        SetConsoleWindowInfo(handle, TRUE, &rect);
+        SetConsoleScreenBufferSize(handle_console, coord);
+        SetConsoleWindowInfo(handle_console, TRUE, &rect);
         SetWindowLong(consoleWindow, GWL_STYLE, style);
     }
 }

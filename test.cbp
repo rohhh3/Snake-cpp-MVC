@@ -47,6 +47,7 @@
 		<Unit filename="src/Model/Snake.cpp" />
 		<Unit filename="src/Model/Snake.hpp" />
 		<Unit filename="src/Model/typedefs.hpp" />
+		<Unit filename="src/View/ConsoleInit.cpp" />
 		<Unit filename="src/View/ConsoleInit.hpp" />
 		<Unit filename="src/View/ESection.hpp" />
 		<Unit filename="src/View/Section.hpp" />
@@ -60,6 +61,8 @@
 		<Unit filename="src/View/Sections/NewGame.hpp" />
 		<Unit filename="src/View/Sections/Scores.cpp" />
 		<Unit filename="src/View/Sections/Scores.hpp" />
+		<Unit filename="src/View/ViewFunctions.cpp" />
+		<Unit filename="src/View/ViewFunctions.hpp" />
 		<Unit filename="src/View/resources.hpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

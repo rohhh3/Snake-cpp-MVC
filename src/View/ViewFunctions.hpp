@@ -3,5 +3,7 @@
 #include <cstdint>
 namespace View
 {
-    void printSpace(uint32_t string_length);
+    void centerStringX(uint16_t string_length);
+    void setCursorPosition(int x, int y);
+    void printHeader();
 }

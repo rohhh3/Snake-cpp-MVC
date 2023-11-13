@@ -1,4 +1,5 @@
 #include "MainMenu.hpp"
+#include "../ViewFunctions.hpp"
 #include "../Section.hpp"
 #include <iostream>
 #include <string>
@@ -17,15 +18,11 @@ namespace View
     {
         std::string menu_items[] = {"New Game", "Scores", "Help", "Exit"};
         int  option_index        = 0;
-        bool isSelected          = false;
+        bool is_selected         = true;
 
-        while(!isSelected)
+        while(is_selected)
         {
-            SetConsoleTextAttribute(handle_console, 2); // set green color
-
-            std::cout << title;
-
-            SetConsoleTextAttribute(handle_console, 7); // back to default color
+            printHeader();
 
             for(int i = 0; i < 4; ++i)
             {
@@ -33,13 +30,12 @@ namespace View
                 if(i == option_index)
                 {
                     SetConsoleTextAttribute(handle_console, 4); // set red color for selected item
-                    std::cout << std::string(padding, ' ') << menu_items[i] << std::endl;
+                    std::cout << std::string(padding, ' ') <<  "> " << menu_items[i] << std::endl;
                     SetConsoleTextAttribute(handle_console, 7); // back to default color
                 }
                 else
-                    std::cout << std::string(padding, ' ') << menu_items[i] << std::endl;
+                    std::cout << std::string(padding, ' ') << "  " << menu_items[i] << std::endl;
             }
-
             char key = _getch();
             switch(key)
             {
@@ -50,7 +46,7 @@ namespace View
                     option_index = (option_index == 3 ? 0 : option_index + 1);
                     break;
                 case 13: //enter button
-                    isSelected = true;
+                    is_selected = false;
                     break;
             }
             system("cls");

@@ -8,11 +8,13 @@
 #include "src/Model/ModelCore.hpp"
 #include "src/View/Section.hpp"
 #include <iostream>
+#include <windows.h>
 
 int main()
 {
+
     Controller::initGame();
-    View::console_init();
+    View::consoleInit();
 
     View::Section* current_section_object;
     View::ESection current_section = View::MAIN_MENU;
@@ -31,6 +33,7 @@ int main()
         current_section = current_section_object->execute();
         delete current_section_object;
     }
+
 
 
 /*
