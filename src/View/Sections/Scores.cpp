@@ -96,17 +96,13 @@ namespace View
                 /* \/ \/ \/ HIGH SCORES \/\/\/ */
 
                 /* \/ \/ \/ COUNT NAME'S LENGTH  \/ \/ \/ */
-                const uint16_t scoreboard_size = scores_on_page.size();
-                uint16_t*      names_lenghts    = new uint16_t[scoreboard_size];
+                uint16_t* names_lenghts    = new uint16_t[scores_on_page.size()];
 
-                for(int i = 0; i < scoreboard_size; i++)
+                for(int i = 0; i < scores_on_page.size(); i++)
                     names_lenghts[i] = 0;
 
-                for(int i = 0; i < scoreboard_size; i++)
-                {
-                    const Model::ScoreboardEntry& entry = scores_on_page[i];
-                    names_lenghts[i] += entry.name.length();
-                }
+                for(int i = 0; i < scores_on_page.size(); i++)
+                    names_lenghts[i] = scores_on_page[i].name.length();
 
                 /* \/\ /\ /\ COUNT NAME'S LENGTH  /\ /\ /\ */
 
