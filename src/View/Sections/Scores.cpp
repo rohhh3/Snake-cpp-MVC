@@ -95,8 +95,35 @@ namespace View
                 std::cout << std::endl;
                 /* \/ \/ \/ HIGH SCORES \/\/\/ */
 
+                /* \/ \/ \/ COUNT NAME'S LENGTH  \/ \/ \/ */
+                const uint16_t scoreboard_size = scores_on_page.size();
+                uint16_t*      names_lenghts    = new uint16_t[scoreboard_size];
+
+                for(int i = 0; i < scoreboard_size; i++)
+                    names_lenghts[i] = 0;
+
+                for(int i = 0; i < scoreboard_size; i++)
+                {
+                    const Model::ScoreboardEntry& entry = scores_on_page[i];
+                    names_lenghts[i] += entry.name.length();
+                }
+
+                /* \/\ /\ /\ COUNT NAME'S LENGTH  /\ /\ /\ */
+
+                /* PRINT SCORES */
+                uint16_t itr = 0;
                 for(auto& i : scores_on_page)
-                    std::cout << std::left << std::setw(20) << i.name << std::setw(10) << i.score << std::endl;
+                {
+                    uint16_t how_many_dots = 50 - names_lenghts[itr] - 11;
+                    itr++;
+                    centerStringX(CONSOLE_WIDTH / 2 - 18);
+                    std::cout <<  i.name;
+                    for(int j = 0; j < how_many_dots; j++)
+                        std::cout << ".";
+                     std::cout<<i.score << std::endl;
+                }
+                    //std::cout << std::left << std::setw(30) <<  i.name <<  std::setw(30) <<   i.score << std::endl;
+                delete[] names_lenghts;
 
                 setCursorPosition((CONSOLE_WIDTH / 2 ) - 4, 25);
                 std::cout << "< " << current_page + 1 << "/" << total_pages + 1 << " >" << std::endl;
