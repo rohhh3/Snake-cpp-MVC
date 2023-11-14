@@ -1,11 +1,15 @@
 #pragma once
 #include "../ESection.hpp"
-#include <iostream>
+#include "../resources.hpp"
+#include "../Section.hpp"
 namespace View
 {
-    ESection executeHelp()
+    class Help : public Section
     {
-        std::cout << "Jestem w help";
-        return EXIT;
-    }
+        public:
+            ESection execute();
+            Help();
+            ~Help();
+
+    };
 }

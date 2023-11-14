@@ -1,9 +1,14 @@
 #pragma once
 #include "../ESection.hpp"
+#include "../resources.hpp"
+#include "../Section.hpp"
 namespace View
 {
-    ESection executeNewGame()
+    class NewGame : public Section
     {
-        return EXIT;
-    }
+        public:
+            ESection execute();
+            NewGame();
+            ~NewGame();
+    };
 }

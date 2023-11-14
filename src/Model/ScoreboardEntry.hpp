@@ -1,4 +1,5 @@
 #pragma once
+#include "typedefs.hpp"
 #include <cstdint>
 #include <string>
 
@@ -7,9 +8,9 @@ namespace Model
     struct ScoreboardEntry
     {
         std::string name;
-        int32_t     score;
+        scoreInt    score;
 
-        ScoreboardEntry(std::string name, int32_t score)
+        ScoreboardEntry(std::string name, scoreInt score)
         {
             this->name  = name;
             this->score = score;

@@ -1,11 +1,14 @@
 #pragma once
 #include "../ESection.hpp"
-#include <iostream>
+#include "../resources.hpp"
+#include "../Section.hpp"
 namespace View
 {
-    ESection executeMainMenu()
+    class MainMenu : public Section
     {
-        std::cout << "Jestem w main menu";
-        return EXIT;
-    }
+        public:
+            ESection execute();
+            MainMenu();
+            ~MainMenu();
+    };
 }

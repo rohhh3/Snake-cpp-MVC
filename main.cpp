@@ -5,32 +5,38 @@
 #include "src/View/Sections/MainMenu.hpp"
 #include "src/View/Sections/NewGame.hpp"
 #include "src/View/Sections/Scores.hpp"
+#include "src/Model/ModelCore.hpp"
+#include "src/View/Section.hpp"
 #include <iostream>
+#include <windows.h>
 
 int main()
 {
+
     Controller::initGame();
-    View::console_init();
+    View::consoleInit();
 
-    View::ESection current_section = View::MAIN_MENU; //inicjalizacja koncepcji sekcji
+    View::Section* current_section_object;
+    View::ESection current_section = View::MAIN_MENU;
 
-    while(current_section != View::EXIT)
+    while(current_section)
     {
         switch(current_section)
         {
-            case View::MAIN_MENU: { current_section = View::executeMainMenu(); break; }
-            case View::NEW_GAME:  { current_section = View::executeNewGame();  break; }
-            case View::GAMEPLAY:  { current_section = View::executeGameplay(); break; }
-            case View::SCORES:    { current_section = View::executeScores();   break; }
-            case View::HELP:      { current_section = View::executeHelp();     break; }
+            case View::MAIN_MENU: { current_section_object = new View::MainMenu; break; }
+            case View::NEW_GAME:  { current_section_object = new View::NewGame;  break; }
+            case View::GAMEPLAY:  { current_section_object = new View::Gameplay; break; }
+            case View::SCORES:    { current_section_object = new View::Scores;   break; }
+            case View::HELP:      { current_section_object = new View::Help;     break; }
             default: break;
         }
+        current_section = current_section_object->execute();
+        delete current_section_object;
     }
 
 
 
-    /*TESTY FUNKCJI SCOREBOARD
-
+/*
     Controller::addScoreboardEntry("Alice", 100);
     Controller::addScoreboardEntry("Bob", 80);
     Controller::addScoreboardEntry("Charlie", 120);
@@ -45,9 +51,8 @@ int main()
 
     Model::ScoreboardEntry entry = Controller::getScoreboardEntry(2);
     std::cout << entry.name << entry.score;
-    */
-
-
+*/
 
     return 0;
 }
+

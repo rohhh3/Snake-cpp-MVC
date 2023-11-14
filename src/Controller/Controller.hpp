@@ -8,5 +8,8 @@ namespace Controller
 
     bool doesScoreQualify(int32_t score);
     void addScoreboardEntry(std::string player_name, int32_t score);
+    void loadScoreboard();
+    void saveScoreboard();
     Model::ScoreboardEntry getScoreboardEntry(uint16_t id); //indeks elementu w wektorze
+    uint16_t getScoreboardSize();
 }
