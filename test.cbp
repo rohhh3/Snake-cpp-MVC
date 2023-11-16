@@ -41,8 +41,13 @@
 		<Unit filename="src/Controller/Controller.cpp" />
 		<Unit filename="src/Controller/Controller.hpp" />
 		<Unit filename="src/Controller/ScoreboardController.cpp" />
+		<Unit filename="src/Model/Board.cpp" />
+		<Unit filename="src/Model/Board.hpp" />
+		<Unit filename="src/Model/EDirection.hpp" />
+		<Unit filename="src/Model/GameCore.hpp" />
 		<Unit filename="src/Model/ModelCore.cpp" />
 		<Unit filename="src/Model/ModelCore.hpp" />
+		<Unit filename="src/Model/Position.hpp" />
 		<Unit filename="src/Model/ScoreboardEntry.hpp" />
 		<Unit filename="src/Model/Snake.cpp" />
 		<Unit filename="src/Model/Snake.hpp" />
@@ -57,8 +62,6 @@
 		<Unit filename="src/View/Sections/Help.hpp" />
 		<Unit filename="src/View/Sections/MainMenu.cpp" />
 		<Unit filename="src/View/Sections/MainMenu.hpp" />
-		<Unit filename="src/View/Sections/NewGame.cpp" />
-		<Unit filename="src/View/Sections/NewGame.hpp" />
 		<Unit filename="src/View/Sections/Scores.cpp" />
 		<Unit filename="src/View/Sections/Scores.hpp" />
 		<Unit filename="src/View/ViewFunctions.cpp" />

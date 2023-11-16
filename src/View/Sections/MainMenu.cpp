@@ -55,7 +55,7 @@ namespace View
         switch(option_index)
         {
             case 0:
-                return NEW_GAME;
+                return GAMEPLAY;
                 break;
             case 1:
                 return SCORES;

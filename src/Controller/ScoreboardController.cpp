@@ -1,4 +1,4 @@
-#include "Controller.hpp"
+#include "ScoreboardController.hpp"
 #include <cassert>
 #include <iostream>
 #include <sstream>

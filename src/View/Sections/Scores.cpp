@@ -51,22 +51,20 @@ namespace View
     ESection Scores::execute()
     {
         char user_input = 0;
-
         if(number_of_scores_on_current_page == 0)
         {
             printHeader();
-
             for(int i = 0; i < CONSOLE_WIDTH; i++)
                 std::cout << "-";
             std::cout << std::endl;
 
-            centerStringX(11);
+            centerX(11);
             std::cout << "High Scores" << std::endl;
             for(int i = 0; i < CONSOLE_WIDTH; i++)
                 std::cout << "-";
             std::cout << std::endl;
 
-            centerStringX(13);
+            centerX(13);
             std::cout << "No scores yet" << std::endl;
 
             user_input = 0;
@@ -88,7 +86,7 @@ namespace View
                     std::cout << "-";
                 std::cout << std::endl;
 
-                centerStringX(11);
+                centerX(11);
                 std::cout << "High Scores" << std::endl;
                 for(int i = 0; i < CONSOLE_WIDTH; i++)
                     std::cout << "-";
@@ -98,10 +96,7 @@ namespace View
                 /* \/ \/ \/ COUNT NAME'S LENGTH  \/ \/ \/ */
                 uint16_t* names_lenghts    = new uint16_t[scores_on_page.size()];
 
-                for(int i = 0; i < scores_on_page.size(); i++)
-                    names_lenghts[i] = 0;
-
-                for(int i = 0; i < scores_on_page.size(); i++)
+                for(uint16_t i = 0; i < scores_on_page.size(); i++)
                     names_lenghts[i] = scores_on_page[i].name.length();
 
                 /* \/\ /\ /\ COUNT NAME'S LENGTH  /\ /\ /\ */
@@ -112,7 +107,7 @@ namespace View
                 {
                     uint16_t how_many_dots = 50 - names_lenghts[itr] - 11;
                     itr++;
-                    centerStringX(CONSOLE_WIDTH / 2 - 18);
+                    centerX(CONSOLE_WIDTH / 2 - 18);
                     std::cout <<  i.name;
                     for(int j = 0; j < how_many_dots; j++)
                         std::cout << ".";

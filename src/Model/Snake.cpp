@@ -1,4 +1,12 @@
+#include "Snake.hpp"
+
 namespace Model
 {
-    //definicje metod, konstruktorowm destruktorow
+    namespace Game
+    {
+        namespace Snake
+        {
+            std::map<Position, EDirection> body;
+        }
+    }
 }

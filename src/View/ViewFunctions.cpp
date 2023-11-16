@@ -4,7 +4,7 @@
 
 namespace View
 {
-    void centerStringX(uint16_t string_length)
+    void centerX(uint16_t string_length)
     {
         uint16_t padding = (CONSOLE_WIDTH - string_length) / 2;
         for(int i = 0; i < padding; i++)

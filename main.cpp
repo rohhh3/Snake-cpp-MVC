@@ -24,7 +24,6 @@ int main()
         switch(current_section)
         {
             case View::MAIN_MENU: { current_section_object = new View::MainMenu; break; }
-            case View::NEW_GAME:  { current_section_object = new View::NewGame;  break; }
             case View::GAMEPLAY:  { current_section_object = new View::Gameplay; break; }
             case View::SCORES:    { current_section_object = new View::Scores;   break; }
             case View::HELP:      { current_section_object = new View::Help;     break; }

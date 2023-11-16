@@ -5,7 +5,6 @@
 namespace Controller
 {
     void initGame(); //ma ladowac wyniki z pliku, ustawiac zmiennym z MODELU wartosci poczatkowe
-
     bool doesScoreQualify(int32_t score);
     void addScoreboardEntry(std::string player_name, int32_t score);
     void loadScoreboard();
