@@ -9,6 +9,7 @@ namespace Model
     {
         namespace Board
         {
+            Position fruit_position;
             void respawn_fruit(std::map<Position, EDirection> const& snake)
             {
                 srand((unsigned) time(NULL));

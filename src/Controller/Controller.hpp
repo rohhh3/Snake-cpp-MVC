@@ -1,7 +1,9 @@
 #pragma once
 #include "../Model/ModelCore.hpp"
 #include "../Model/GameCore.hpp"
+#include "../Model/typedefs.hpp"
 #include <cstdint>
+#include <string>
 
 namespace Controller
 {
@@ -11,8 +13,9 @@ namespace Controller
     void addScoreboardEntry(std::string player_name, int32_t score);
     void loadScoreboard();
     void saveScoreboard();
-    Model::ScoreboardEntry getScoreboardEntry(uint16_t id); //indeks elementu w wektorze
+    Model::ScoreboardEntry getScoreboardEntry(uint16_t id);
     uint16_t getScoreboardSize();
 
     void resetGameplay();
+    void moveSnake();
 }
