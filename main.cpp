@@ -5,7 +5,6 @@
 #include "src/View/Sections/MainMenu.hpp"
 #include "src/View/Sections/NewGame.hpp"
 #include "src/View/Sections/Scores.hpp"
-#include "src/Model/ModelCore.hpp"
 #include "src/View/Section.hpp"
 #include <iostream>
 #include <windows.h>

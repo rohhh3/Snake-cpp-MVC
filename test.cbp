@@ -40,10 +40,12 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Controller/Controller.cpp" />
 		<Unit filename="src/Controller/Controller.hpp" />
+		<Unit filename="src/Controller/GameController.cpp" />
 		<Unit filename="src/Controller/ScoreboardController.cpp" />
 		<Unit filename="src/Model/Board.cpp" />
 		<Unit filename="src/Model/Board.hpp" />
 		<Unit filename="src/Model/EDirection.hpp" />
+		<Unit filename="src/Model/Game.cpp" />
 		<Unit filename="src/Model/GameCore.hpp" />
 		<Unit filename="src/Model/ModelCore.cpp" />
 		<Unit filename="src/Model/ModelCore.hpp" />

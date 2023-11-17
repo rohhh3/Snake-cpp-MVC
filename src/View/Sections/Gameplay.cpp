@@ -1,12 +1,14 @@
 #include "Gameplay.hpp"
 #include "../Section.hpp"
+#include "../../Model/GameCore.hpp"
+#include "../../Controller/Controller.hpp"
 #include <iostream>
 #include <conio.h>
 namespace View
 {
     Gameplay::Gameplay()
     {
-
+        Controller::resetGameplay();
     }
 
     Gameplay::~Gameplay(){ }

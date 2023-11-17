@@ -1,6 +1,7 @@
 #include "MainMenu.hpp"
 #include "../ViewFunctions.hpp"
 #include "../Section.hpp"
+#include "../../Model/typedefs.hpp"
 #include <iostream>
 #include <string>
 #include <conio.h>
@@ -39,13 +40,13 @@ namespace View
             char key = _getch();
             switch(key)
             {
-                case 72: //up arrow key
+                case KEY_UP:
                     option_index = (option_index == 0 ? 3 : option_index - 1);
                     break;
-                case 80: // Down arrow
+                case KEY_DOWN:
                     option_index = (option_index == 3 ? 0 : option_index + 1);
                     break;
-                case 13: //enter button
+                case KEY_ENTER:
                     is_selected = false;
                     break;
             }

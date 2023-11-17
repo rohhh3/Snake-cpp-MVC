@@ -10,7 +10,8 @@ namespace Model
         namespace Snake
         {
             extern std::map<Position, EDirection> body;
-            void reset(Position head_position, EDirection head_direction, uint16_t length);
+            extern uint16_t length;
+            void reset(Position head_position, EDirection head_direction, uint16_t init_length);
             bool move();
         }
     }

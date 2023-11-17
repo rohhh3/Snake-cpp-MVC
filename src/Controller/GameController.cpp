@@ -2,9 +2,8 @@
 
 namespace Controller
 {
-    void initGame()
+    void resetGameplay()
     {
-        loadScoreboard();
+        Model::Game::reset();
     }
 }
-

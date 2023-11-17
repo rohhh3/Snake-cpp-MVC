@@ -2,14 +2,11 @@
 #include "../ViewFunctions.hpp"
 #include "../Section.hpp"
 #include "../../Model/ModelCore.hpp"
+#include "../../Model/typedefs.hpp"
 #include <iostream>
 #include <iomanip>
 #include <conio.h>
 #include <windows.h>
-
-#define KEY_LEFT 75
-#define KEY_RIGHT 77
-
 
 namespace View
 {

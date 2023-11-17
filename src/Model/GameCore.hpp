@@ -1,10 +1,12 @@
 #pragma once
 #include "typedefs.hpp"
+#include <string>
 namespace Model
 {
     namespace Game
     {
-        scoreInt player_score;
+        extern scoreInt    player_score;
+        extern std::string player_name;
         void reset();
     }
 }
