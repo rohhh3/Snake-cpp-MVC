@@ -3,6 +3,7 @@
 #include "../Controller/Controller.hpp"
 #include <iostream>
 #include <windows.h>
+#include <conio.h>
 
 namespace Model
 {
@@ -12,8 +13,8 @@ namespace Model
         {
             uint16_t   length;
             Position   head_position;
-            EDirection direction;
             Position   tail_position;
+            EDirection direction;
 
             std::map<Position, EDirection> body;
 
@@ -154,9 +155,18 @@ namespace Model
                 Sleep(200);
             }
 
-            void changeDirection(EDirection direction)
+            void changeDirection(EDirection new_direction)
             {
-
+                if(new_direction != direction)
+                {
+                    if ((new_direction == UP && GetAsyncKeyState(VK_UP)) ||
+                        (new_direction == RIGHT && GetAsyncKeyState(VK_RIGHT)) ||
+                        (new_direction == DOWN && GetAsyncKeyState(VK_DOWN)) ||
+                        (new_direction == LEFT && GetAsyncKeyState(VK_LEFT)))
+                    {
+                        direction = new_direction;
+                    }
+                }
             }
 
         }

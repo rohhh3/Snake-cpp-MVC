@@ -20,5 +20,7 @@ namespace Controller
     void resetGameplay();
     void moveSnake();
     void addPoint();
+    void handleUserInput();
     void changeDirection(Model::EDirection direction);
+
 }

@@ -3,7 +3,6 @@
 #include "../../Model/GameCore.hpp"
 #include "../../Controller/Controller.hpp"
 #include <iostream>
-#include <conio.h>
 namespace View
 {
     Gameplay::Gameplay()
@@ -17,16 +16,10 @@ namespace View
         is_gameplay_running = true;
         while(is_gameplay_running)
         {
+            Controller::handleUserInput();
             Controller::moveSnake();
-        }
-        /*
-        char userInput = 0;
-        while(userInput != '\b')
-            userInput = _getch();
 
-        system("cls");
-        return MAIN_MENU;
-        */
+        }
         return EXIT;
     }
 }
