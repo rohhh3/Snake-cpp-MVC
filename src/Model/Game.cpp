@@ -1,19 +1,16 @@
 #include "GameCore.hpp"
-#include "typedefs.hpp"
-#include "Snake.hpp"
 
 namespace Model
 {
     namespace Game
     {
-        scoreInt    player_score;
-        std::string player_name;
+        scoreInt player_score;
+        uint16_t speed;
 
         void reset()
         {
             player_score = 0;
-            player_name  = "";
-            Snake::reset({2,8}, RIGHT, 1);
+            speed        = 1;
         }
     }
 }

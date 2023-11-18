@@ -2,6 +2,7 @@
 #include "../Model/ModelCore.hpp"
 #include "../Model/GameCore.hpp"
 #include "../Model/typedefs.hpp"
+#include "../Model/EDirection.hpp"
 #include <cstdint>
 #include <string>
 
@@ -18,4 +19,6 @@ namespace Controller
 
     void resetGameplay();
     void moveSnake();
+    void addPoint();
+    void changeDirection(Model::EDirection direction);
 }

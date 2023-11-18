@@ -12,10 +12,13 @@ namespace Model
         {
             extern std::map<Position, EDirection> body;
             extern uint16_t   length;
-            extern Position   starting_position;
+            extern Position   head_position;
+            extern Position   tail_position;
             extern EDirection starting_direction;
-            void reset(Position head_position, EDirection head_direction, uint16_t init_length);
+            void reset(Position head_pos, EDirection head_dir, uint16_t init_length);
             bool move();
+            void print();
+            void changeDirection(EDirection direction);
         }
     }
 

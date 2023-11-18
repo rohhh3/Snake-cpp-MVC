@@ -1,16 +1,8 @@
 #pragma once
 #include <cstdint>
 #include <string>
-
+#include <utility>
 namespace Model
 {
-    struct Position
-    {
-        uint8_t x, y;
-
-        bool operator<(const Position& other) const
-        {
-            return (x < other.x) || ((x == other.x) && (y < other.y));
-        }
-    };
+    typedef std::pair<uint8_t, uint8_t> Position;
 }

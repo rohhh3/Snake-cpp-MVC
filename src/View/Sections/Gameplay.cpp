@@ -18,7 +18,6 @@ namespace View
         while(is_gameplay_running)
         {
             Controller::moveSnake();
-
         }
         /*
         char userInput = 0;
@@ -28,5 +27,6 @@ namespace View
         system("cls");
         return MAIN_MENU;
         */
+        return EXIT;
     }
 }
