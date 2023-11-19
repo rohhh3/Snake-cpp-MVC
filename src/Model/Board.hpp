@@ -12,7 +12,7 @@ namespace Model
         {
             const uint8_t WIDTH = 100;
             const uint8_t HEIGHT = 40;
-            Position fruit_position;
+            extern Position fruit_position;
             void respawn_fruit(std::map<Position, EDirection> const& snake);
         }
     }

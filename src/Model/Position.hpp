@@ -1,11 +1,7 @@
 #pragma once
 #include <cstdint>
 #include <string>
+#include <utility>
 
-namespace Model
-{
-    struct Position
-    {
-        uint8_t x, y;
-    };
-}
+typedef std::pair<uint8_t, uint8_t> Position;
+
