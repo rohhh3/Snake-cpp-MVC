@@ -1,5 +1,4 @@
 #include "Board.hpp"
-#include <time.h>
 
 namespace Model
 {
@@ -10,7 +9,6 @@ namespace Model
             Position fruit_position;
             void respawn_fruit(std::map<Position, EDirection> const& snake)
             {
-                srand(time(NULL));
                 do
                 {
                     fruit_position.first  = rand() % WIDTH;

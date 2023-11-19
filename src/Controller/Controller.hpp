@@ -18,9 +18,13 @@ namespace Controller
     uint16_t getScoreboardSize();
 
     void resetGameplay();
-    void moveSnake();
+    bool moveSnake();
     void addPoint();
     void handleUserInput();
-    void changeDirection(Model::EDirection direction);
-
+    void changeDirection(EDirection direction);
+    uint8_t getBoardWidth();
+    uint8_t getBoardHeight();
+    scoreInt getScore();
+    Position getFruitPosition();
+    std::map<Position, EDirection> getSnake();
 }

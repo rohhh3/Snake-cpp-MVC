@@ -14,7 +14,8 @@ namespace Model
             uint16_t   length;
             Position   head_position;
             Position   tail_position;
-            EDirection direction;
+            EDirection head_direction;
+            EDirection head_next_direction;
 
             std::map<Position, EDirection> body;
 
@@ -23,8 +24,8 @@ namespace Model
                 body.clear();
                 length         = init_length;
                 head_position  = head_pos;
-                direction      = head_dir;
-                body.insert({head_position, direction});
+                head_direction = head_next_direction = head_dir;
+                body.insert({head_position, head_direction});
 
                 Position body_tile_pos = head_pos;
                 for(uint16_t i = 0; i < init_length - 1; i++)
@@ -66,7 +67,7 @@ namespace Model
                         length = i + 1;
                         break;
                     }
-                    body.insert({body_tile_pos, direction});
+                    body.insert({body_tile_pos, head_direction});
                 }
                 tail_position = body_tile_pos;
             }
@@ -74,7 +75,7 @@ namespace Model
             bool move()
             {
                 Position new_position = head_position;
-                switch(direction)
+                switch(head_next_direction)
                 {
                     case UP:
                         new_position.second--;
@@ -90,7 +91,8 @@ namespace Model
                         break;
                 }
 
-                if(new_position.first < 0 || new_position.first >= Board::WIDTH || new_position.second < 0 || new_position.second >= Board::HEIGHT)
+                if(new_position.first < 0 || new_position.first >= Board::WIDTH
+                   || new_position.second < 0 || new_position.second >= Board::HEIGHT)
                     return false;
 
                 if(body.count(new_position))
@@ -118,55 +120,51 @@ namespace Model
                             break;
                     }
                 }
-
-                head_position      = new_position;
-                body[new_position] = direction;
+                body.at(head_position) = head_next_direction;
+                head_position          = new_position;
+                body[new_position]     = head_next_direction;
+                head_direction         = head_next_direction;
 
                 return true;
             }
 
-            void print()
-            {
-                system("cls");
-                std::string text = "";
-                for (int y = 0; y < Board::HEIGHT; ++y)
-                {
-                    for (int x = 0; x < Board::WIDTH; ++x)
-                    {
-                        Position current_position = { x, y };
-
-                        if (body.count(current_position))
-                        {
-                            text += "S";
-                        }
-                        else if (current_position == Board::fruit_position)
-                        {
-                            text += "F";
-                        }
-                        else
-                        {
-                            text += ".";
-                        }
-                    }
-                    text += "\n";
-                }
-                text += "\n";
-                std::cout << text;
-                Sleep(200);
-            }
-
             void changeDirection(EDirection new_direction)
             {
-                if(new_direction != direction)
+                bool will_change = true;
+                if(new_direction != head_direction)
                 {
-                    if ((new_direction == UP && GetAsyncKeyState(VK_UP)) ||
-                        (new_direction == RIGHT && GetAsyncKeyState(VK_RIGHT)) ||
-                        (new_direction == DOWN && GetAsyncKeyState(VK_DOWN)) ||
-                        (new_direction == LEFT && GetAsyncKeyState(VK_LEFT)))
+                    switch(new_direction)
                     {
-                        direction = new_direction;
+                        case UP:
+                            if(head_direction == DOWN)
+                                will_change = false;
+                            break;
+                        case RIGHT:
+                            if(head_direction == LEFT)
+                                will_change = false;
+                            break;
+                        case DOWN:
+                            if(head_direction == UP)
+                                will_change = false;
+                            break;
+                        case LEFT:
+                            if(head_direction == RIGHT)
+                                will_change = false;
+                            break;
+                    }
+                    if( will_change && ((new_direction == UP    && GetAsyncKeyState(VK_UP)) ||
+                        (new_direction == RIGHT && GetAsyncKeyState(VK_RIGHT)) ||
+                        (new_direction == DOWN  && GetAsyncKeyState(VK_DOWN)) ||
+                        (new_direction == LEFT  && GetAsyncKeyState(VK_LEFT))))
+                    {
+                        head_next_direction = new_direction;
                     }
                 }
+            }
+
+            EDirection getDirection()
+            {
+                return head_direction;
             }
 
         }

@@ -69,6 +69,7 @@
 		<Unit filename="src/View/ViewFunctions.cpp" />
 		<Unit filename="src/View/ViewFunctions.hpp" />
 		<Unit filename="src/View/resources.hpp" />
+		<Unit filename="src/keyCodes.hpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

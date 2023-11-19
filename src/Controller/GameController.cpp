@@ -1,48 +1,79 @@
 #include "Controller.hpp"
 #include "../Model/Board.hpp"
+#include "../keyCodes.hpp"
 #include <conio.h>
 namespace Controller
 {
     void resetGameplay()
     {
         Model::Game::reset();
-        Model::Game::Snake::reset({2,8}, Model::DOWN, 4); //(coordinates, direction, length)
+        Model::Game::Snake::reset({10,20}, UP, 10); //(coordinates, direction, length)
         Model::Game::Board::respawn_fruit(Model::Game::Snake::body);
     }
 
-    void moveSnake()
+    bool moveSnake()
     {
-        Model::Game::Snake::move();
+        return Model::Game::Snake::move();
+    }
+
+    std::map<Position, EDirection> getSnake()
+    {
+        return Model::Game::Snake::body;
+    }
+
+    uint8_t getBoardWidth()
+    {
+        return Model::Game::Board::WIDTH;
+    }
+
+    uint8_t getBoardHeight()
+    {
+        return Model::Game::Board::HEIGHT;
+    }
+
+    Position getFruitPosition()
+    {
+        return Model::Game::Board::fruit_position;
     }
 
     void addPoint()
     {
         Model::Game::player_score++;
+        Model::Game::Board::respawn_fruit(Model::Game::Snake::body);
+    }
+
+    scoreInt getScore()
+    {
+        return Model::Game::player_score;
     }
 
     void handleUserInput()
     {
-        if(_kbhit())
+        while(kbhit())
         {
-            char key = _getch();
-            switch (key)
+            char key = getch();
+            switch(key)
             {
                 case KEY_UP:
-                    changeDirection(Model::UP);
+                    if(Model::Game::Snake::getDirection() != DOWN)
+                        changeDirection(UP);
                     break;
                 case KEY_LEFT:
-                    changeDirection(Model::LEFT);
+                    if(Model::Game::Snake::getDirection() != RIGHT)
+                        changeDirection(LEFT);
                     break;
                 case KEY_DOWN:
-                    changeDirection(Model::DOWN);
+                    if(Model::Game::Snake::getDirection() != UP)
+                        changeDirection(DOWN);
                     break;
                 case KEY_RIGHT:
-                    changeDirection(Model::RIGHT);
+                    if(Model::Game::Snake::getDirection() != LEFT)
+                        changeDirection(RIGHT);
                     break;
             }
         }
     }
-    void changeDirection(Model::EDirection direction)
+    void changeDirection(EDirection direction)
     {
         Model::Game::Snake::changeDirection(direction);
     }

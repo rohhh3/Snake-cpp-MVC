@@ -6,7 +6,7 @@
 namespace Model
 {
     std::vector<ScoreboardEntry> scoreboard;
-    bool doesScoreQualify(Model::scoreInt fresh_score)
+    bool doesScoreQualify(scoreInt fresh_score)
     {
         if(
            Model::scoreboard.empty() ||
@@ -17,7 +17,7 @@ namespace Model
         return false;
     }
 
-    void addScoreboardEntry(std::string player_name, Model::scoreInt fresh_score)
+    void addScoreboardEntry(std::string player_name, scoreInt fresh_score)
     {
         if(!doesScoreQualify(fresh_score))
             return;
@@ -68,7 +68,7 @@ namespace Model
             int score;
 
             if(std::getline(iss, name, ',') && iss >> score)
-                Model::scoreboard.emplace_back(name, static_cast<Model::scoreInt>(score));
+                Model::scoreboard.emplace_back(name, static_cast<scoreInt>(score));
             else
                 std::cerr << "Error: Invalid line format in the scoreboard file." << std::endl;
         }

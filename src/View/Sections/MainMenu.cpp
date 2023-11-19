@@ -1,9 +1,8 @@
 #include "MainMenu.hpp"
 #include "../ViewFunctions.hpp"
-#include "../Section.hpp"
 #include "../../Model/typedefs.hpp"
+#include "../../keyCodes.hpp"
 #include <iostream>
-#include <string>
 #include <conio.h>
 
 namespace View

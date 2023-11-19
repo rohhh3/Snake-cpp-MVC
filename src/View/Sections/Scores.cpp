@@ -1,12 +1,9 @@
 #include "Scores.hpp"
 #include "../ViewFunctions.hpp"
-#include "../Section.hpp"
-#include "../../Model/ModelCore.hpp"
-#include "../../Model/typedefs.hpp"
+#include "../../keyCodes.hpp"
 #include <iostream>
-#include <iomanip>
 #include <conio.h>
-#include <windows.h>
+
 
 namespace View
 {
@@ -48,6 +45,7 @@ namespace View
     ESection Scores::execute()
     {
         char user_input = 0;
+
         if(number_of_scores_on_current_page == 0)
         {
             printHeader();
@@ -110,7 +108,7 @@ namespace View
                         std::cout << ".";
                      std::cout<<i.score << std::endl;
                 }
-                    //std::cout << std::left << std::setw(30) <<  i.name <<  std::setw(30) <<   i.score << std::endl;
+
                 delete[] names_lenghts;
 
                 setCursorPosition((CONSOLE_WIDTH / 2 ) - 4, 25);

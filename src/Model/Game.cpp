@@ -1,5 +1,5 @@
 #include "GameCore.hpp"
-
+#include <time.h>
 namespace Model
 {
     namespace Game
@@ -9,6 +9,7 @@ namespace Model
 
         void reset()
         {
+            srand(time(NULL));
             player_score = 0;
             speed        = 1;
         }

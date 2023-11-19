@@ -15,10 +15,12 @@ namespace Model
             extern Position   head_position;
             extern Position   tail_position;
             extern EDirection starting_direction;
+            extern EDirection head_direction;
+            extern EDirection head_next_direction;
             void reset(Position head_pos, EDirection head_dir, uint16_t init_length);
             bool move();
-            void print();
             void changeDirection(EDirection new_direction);
+            EDirection getDirection();
         }
     }
 
