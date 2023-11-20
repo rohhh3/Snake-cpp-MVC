@@ -1,6 +1,10 @@
 #include "ViewFunctions.hpp"
 #include <iostream>
+
+#ifdef _WIN32
 #include <windows.h>
+#endif
+
 
 namespace View
 {
@@ -21,8 +25,27 @@ namespace View
 
     void printHeader()
     {
-        SetConsoleTextAttribute(handle_console, 2); // set green color
+        setConsoleColor(2); // set green color
         std::cout << title;
-        SetConsoleTextAttribute(handle_console, 7); // back to default color
+        resetConsoleColor(); // back to default color
+    }
+
+    void setConsoleColor(int color)
+    {
+        #ifdef _WIN32
+            SetConsoleTextAttribute(handle_console, color);
+        #else
+            // Unix-like system
+            std::cout << "\033[38;5;" << color << "m";
+        #endif
+    }
+    void resetConsoleColor()
+    {
+        #ifdef _WIN32
+            SetConsoleTextAttribute(handle_console, 7); // 7 is the default color
+        #else
+            // Unix-like system
+            std::cout << "\033[0m";
+        #endif
     }
 }

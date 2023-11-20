@@ -2,12 +2,14 @@
 #include "../Model/Board.hpp"
 #include "../keyCodes.hpp"
 #include <conio.h>
+
 namespace Controller
 {
     void resetGameplay()
     {
         Model::Game::reset();
-        Model::Game::Snake::reset({10,20}, UP, 10); //(coordinates, direction, length)
+        Model::Game::Snake::reset({5,10}, RIGHT, 2);  //(coordinates, direction, length)
+                                                      // length = 1 generates an exception
         Model::Game::Board::respawn_fruit(Model::Game::Snake::body);
     }
 

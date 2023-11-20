@@ -10,8 +10,8 @@ namespace Model
     {
         namespace Board
         {
-            const uint8_t WIDTH = 100;
-            const uint8_t HEIGHT = 40;
+            const uint8_t WIDTH = 80;
+            const uint8_t HEIGHT = 20;
             extern Position fruit_position;
             void respawn_fruit(std::map<Position, EDirection> const& snake);
         }

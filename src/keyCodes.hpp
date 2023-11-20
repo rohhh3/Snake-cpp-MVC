@@ -4,3 +4,4 @@ const char KEY_LEFT  = 75;
 const char KEY_RIGHT = 77;
 const char KEY_DOWN  = 80;
 const char KEY_ENTER = 13;
+const char KEY_BACKSPACE = 8;

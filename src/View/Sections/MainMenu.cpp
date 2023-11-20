@@ -29,14 +29,14 @@ namespace View
                 int padding = (CONSOLE_WIDTH - menu_items[i].length()) / 2;
                 if(i == option_index)
                 {
-                    SetConsoleTextAttribute(handle_console, 4); // set red color for selected item
+                    setConsoleColor(4); // set red color for selected item
                     std::cout << std::string(padding, ' ') <<  "> " << menu_items[i] << std::endl;
-                    SetConsoleTextAttribute(handle_console, 7); // back to default color
+                    resetConsoleColor(); // back to default color
                 }
                 else
                     std::cout << std::string(padding, ' ') << "  " << menu_items[i] << std::endl;
             }
-            char key = _getch();
+            char key = getch();
             switch(key)
             {
                 case KEY_UP:
