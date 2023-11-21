@@ -35,6 +35,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Controller/AudioController.cpp" />
 		<Unit filename="src/Controller/Controller.cpp" />
 		<Unit filename="src/Controller/Controller.hpp" />
 		<Unit filename="src/Controller/GameController.cpp" />

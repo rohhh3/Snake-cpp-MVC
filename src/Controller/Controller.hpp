@@ -27,4 +27,7 @@ namespace Controller
     scoreInt getScore();
     Position getFruitPosition();
     std::map<Position, EDirection> getSnake();
+
+    void playMenuSong();
+    void playGameplaySong();
 }

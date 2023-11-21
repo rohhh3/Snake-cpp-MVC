@@ -2,6 +2,7 @@
 #include "../ViewFunctions.hpp"
 #include "../../Model/typedefs.hpp"
 #include "../../keyCodes.hpp"
+#include "../../Controller/Controller.hpp"
 #include <iostream>
 #include <conio.h>
 
@@ -9,7 +10,7 @@ namespace View
 {
     MainMenu::MainMenu()
     {
-
+        Controller::playMenuSong();
     }
 
     MainMenu::~MainMenu(){ }
@@ -19,7 +20,6 @@ namespace View
         std::string menu_items[] = {"New Game", "Scores", "Help", "Exit"};
         int  option_index        = 0;
         bool is_selected         = true;
-
         while(is_selected)
         {
             printHeader();
@@ -46,6 +46,7 @@ namespace View
                     option_index = (option_index == 3 ? 0 : option_index + 1);
                     break;
                 case KEY_ENTER:
+                    PlaySound(0, 0, 0);
                     is_selected = false;
                     break;
             }

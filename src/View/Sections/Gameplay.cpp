@@ -13,6 +13,7 @@ namespace View
         Controller::resetGameplay();
         board_height = Controller::getBoardHeight();
         board_width  = Controller::getBoardWidth();
+        Controller::playGameplaySong();
     }
 
     Gameplay::~Gameplay(){ }
@@ -130,7 +131,7 @@ namespace View
                             std::cout << "Your name: ";
                             std::cin >> player_name;
                             centerX(21);
-                            std::cout << player_name <<"Score has been saved!" << std::endl;
+                            std::cout << player_name <<" score has been saved!" << std::endl;
                             Controller::addScoreboardEntry(player_name, Controller::getScore());
                             Controller::saveScoreboard();
                             player_name = "";

@@ -40,8 +40,22 @@ namespace Controller
 
     void addPoint()
     {
-        Model::Game::player_score++;
+        Position currentFruitPosition = Model::Game::Board::fruit_position;
+        Position nextFruitPosition;
+
+        // Respawn the next fruit and get its position
         Model::Game::Board::respawn_fruit(Model::Game::Snake::body);
+        nextFruitPosition = Model::Game::Board::fruit_position;
+
+        // Calculate the distance between the current and next fruit
+        int distance = abs(nextFruitPosition.first - currentFruitPosition.first) +
+                       abs(nextFruitPosition.second - currentFruitPosition.second);
+
+        // Calculate points based on distance
+        Model::Game::player_score += abs(10 - distance);
+
+        // Update the current fruit position
+        currentFruitPosition = nextFruitPosition;
     }
 
     scoreInt getScore()

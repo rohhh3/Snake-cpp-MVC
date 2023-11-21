@@ -3,6 +3,8 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <windows.h>
+#include <mmsystem.h>
 namespace Model
 {
     std::vector<ScoreboardEntry> scoreboard;
@@ -100,4 +102,18 @@ namespace Model
     {
         return Model::scoreboard.size();
     }
+
+    void playMenuSong()
+    {
+        const std::string song_name = "Jeremy-Blake_Powerup.wav";
+        const std::string result    = audio_path + song_name;
+        PlaySound(result.c_str(), NULL, SND_ASYNC);
+    }
+    void playGameplaySong()
+    {
+        const std::string song_name = "Joshua-McLean-Mountain-Trials.wav";
+        const std::string result    = audio_path + song_name;
+        PlaySound(result.c_str(), NULL, SND_ASYNC | SND_NOSTOP);
+    }
+
 }

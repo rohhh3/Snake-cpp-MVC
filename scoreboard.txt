@@ -1,2 +1,4 @@
+witam,347
+kubek,174
 Antek,8
 dzieki,2
