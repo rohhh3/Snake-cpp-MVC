@@ -4,7 +4,6 @@
 #include <iostream>
 #include <conio.h>
 
-
 namespace View
 {
     Scores::Scores()
@@ -45,7 +44,7 @@ namespace View
     ESection Scores::execute()
     {
         char user_input = 0;
-
+        std::string text = "";
         if(number_of_scores_on_current_page == 0)
         {
             printHeader();

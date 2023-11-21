@@ -74,7 +74,7 @@ namespace Model
             else
                 std::cerr << "Error: Invalid line format in the scoreboard file." << std::endl;
         }
-        std::cout << "File loaded: " << file_path << std::endl;
+        //std::cout << "File loaded: " << file_path << std::endl;
         file.close();
     }
 
@@ -107,13 +107,20 @@ namespace Model
     {
         const std::string song_name = "Jeremy-Blake_Powerup.wav";
         const std::string result    = audio_path + song_name;
-        PlaySound(result.c_str(), NULL, SND_ASYNC);
+        PlaySound(result.c_str(), NULL, SND_ASYNC | SND_LOOP);
     }
     void playGameplaySong()
     {
         const std::string song_name = "Joshua-McLean-Mountain-Trials.wav";
         const std::string result    = audio_path + song_name;
-        PlaySound(result.c_str(), NULL, SND_ASYNC | SND_NOSTOP);
+        PlaySound(result.c_str(), NULL, SND_ASYNC | SND_LOOP);
+    }
+
+    void playGameOverSong()
+    {
+        const std::string song_name = "Game-over-mbmusic.wav";
+        const std::string result    = audio_path + song_name;
+        PlaySound(result.c_str(), NULL, SND_ASYNC);
     }
 
 }

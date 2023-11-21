@@ -3,7 +3,6 @@
 #include "../../keyCodes.hpp"
 #include "../ViewFunctions.hpp"
 #include <iostream>
-#include <iomanip>
 #include <conio.h>
 
 namespace View
@@ -29,20 +28,17 @@ namespace View
         for(int y = 0; y < board_height; ++y)
         {
             board_string += std::string(leftPadding, ' ');
-            for(int x = 0; x < board_width; ++x)
+
+            for(int x = 0; x < board_width; x++)
             {
                 Position current_position = { x, y };
                 if(snake_body.count(current_position))
                 {
-                    //setConsoleColor(2);
                     board_string += static_cast<char>(219);
-                    //resetConsoleColor();
                 }
                 else if(current_position == fruit_position)
                 {
-                    //setConsoleColor(4);
                     board_string += static_cast<char>(4);
-                    //resetConsoleColor();
                 }
                 else
                     board_string += ".";
@@ -82,16 +78,22 @@ namespace View
         while(true)
         {
             print_board();
-            Sleep(80);
+
+            uint16_t sleep_duration = std::max(35, 200 - 2 * Controller::getScore());
+            Sleep(sleep_duration);
+
             Controller::handleUserInput();
             if(!Controller::moveSnake())
                 break;
         }
         centerX(10);
         std::cout << "GAME OVER!" << std::endl;
+
+        Controller::playGameOverSong();
+
+        bool is_selected = true;
         if(Controller::doesScoreQualify(Controller::getScore()))
         {
-            bool is_selected = true;
             std::string menu_items[] = {"Yes", "No"};
             uint8_t     option_index = 0;
             std::string player_name;
@@ -103,10 +105,10 @@ namespace View
             {
                 for(uint8_t i = 0; i < 2; ++i)
                 {
-                    int padding = (CONSOLE_WIDTH - menu_items[i].length()) / 2;
+                    int padding = (CONSOLE_WIDTH - menu_items[i].length() - 4) / 2;
                     if(i == option_index)
                     {
-                        setConsoleColor(4); // set red color for selected item
+                        setConsoleColor(4); // set red color
                         std::cout << std::string(padding, ' ') <<  "> " << menu_items[i] << std::endl;
                         resetConsoleColor();
                     }
@@ -174,8 +176,31 @@ namespace View
         }
         else
         {
-            std::cout << "Your score does not qualify...";
-            getch();
+            while(is_selected)
+            {
+                centerX(30);
+                std::cout << "Your score does not qualify..." << std::endl << std::endl;
+                getch();
+
+                system("cls");
+                print_board();
+
+                centerX(30);
+                std::cout << "Press ENTER to resume the game" << std::endl;
+                centerX(34);
+                std::cout << "Press BACKSPACE to go back to menu";
+                char key = getch();
+                switch(key)
+                {
+                    case KEY_ENTER:
+                        system("cls");
+                        return GAMEPLAY;
+                    case KEY_BACKSPACE:
+                        system("cls");
+                        return MAIN_MENU;
+                }
+                is_selected = false;
+            }
         }
 
         system("cls");

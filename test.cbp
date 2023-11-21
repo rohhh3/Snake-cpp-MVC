@@ -33,7 +33,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="C:/Users/chris/Desktop/SDL2/include" />
 		</Compiler>
+		<Linker>
+			<Add option="-lmingw32 -lSDL2main -lSDL2" />
+			<Add directory="C:/Users/chris/Desktop/SDL2/lib" />
+		</Linker>
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Controller/AudioController.cpp" />
 		<Unit filename="src/Controller/Controller.cpp" />

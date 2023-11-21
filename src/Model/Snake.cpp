@@ -1,10 +1,7 @@
 #include "Snake.hpp"
 #include "Board.hpp"
 #include "../Controller/Controller.hpp"
-#include <iostream>
 #include <windows.h>
-#include <conio.h>
-#include <mmsystem.h>
 
 namespace Model
 {
@@ -100,10 +97,7 @@ namespace Model
                     return false;
 
                 if(new_position == Board::fruit_position)
-                {
                     Controller::addPoint();
-                    PlaySound("sounds/click_effect.wav", NULL, SND_ASYNC);
-                }
 
                 else
                 {

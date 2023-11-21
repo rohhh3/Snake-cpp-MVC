@@ -11,4 +11,9 @@ namespace Controller
     {
         Model::playGameplaySong();
     }
+
+    void playGameOverSong()
+    {
+        Model::playGameOverSong();
+    }
 }

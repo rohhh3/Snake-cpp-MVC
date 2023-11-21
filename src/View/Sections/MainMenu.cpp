@@ -1,6 +1,5 @@
 #include "MainMenu.hpp"
 #include "../ViewFunctions.hpp"
-#include "../../Model/typedefs.hpp"
 #include "../../keyCodes.hpp"
 #include "../../Controller/Controller.hpp"
 #include <iostream>
