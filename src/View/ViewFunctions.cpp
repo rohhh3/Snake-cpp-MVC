@@ -10,7 +10,14 @@ namespace View
         for(int i = 0; i < padding; i++)
             std::cout << " ";
     }
-
+    std::string giveSpaceToString(uint16_t string_length)
+    {
+        std::string space;
+        uint16_t padding = (CONSOLE_WIDTH - string_length) / 2;
+        for(int i = 0; i < padding; i++)
+            space += " ";
+        return space;
+    }
     void setCursorPosition(int x, int y)
     {
         COORD coord;

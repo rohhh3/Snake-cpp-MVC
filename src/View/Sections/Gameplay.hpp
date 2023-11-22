@@ -1,10 +1,8 @@
 #pragma once
-#include "../ESection.hpp"
-#include "../resources.hpp"
 #include "../Section.hpp"
 #include "../../Model/Snake.hpp"
-#include <iostream>
 #include <map>
+
 namespace View
 {
     class Gameplay : public Section

@@ -33,13 +33,11 @@ namespace View
             {
                 Position current_position = { x, y };
                 if(snake_body.count(current_position))
-                {
                     board_string += static_cast<char>(219);
-                }
+
                 else if(current_position == fruit_position)
-                {
                     board_string += static_cast<char>(4);
-                }
+
                 else
                     board_string += ".";
             }
@@ -49,28 +47,29 @@ namespace View
         std::cout << board_string;
         centerX(7);
         std::cout << "Score: " << Controller::getScore() << std::endl;
-/* TESTS
-        std::cout << "tailpos: "<< static_cast<uint16_t>(Model::Game::Snake::tail_position.first)
-        << ", " << static_cast<uint16_t>(Model::Game::Snake::tail_position.second);
-        switch(Model::Game::Snake::head_direction)
-        {
-            case UP:
-                std::cout << " head_dir: UP" << std::endl;
-                break;
-            case RIGHT:
-                std::cout << " head_dir: RIGHT" << std::endl;
-                break;
-            case DOWN:
-                std::cout << " head_dir: DOWN" << std::endl;
-                break;
-            case LEFT:
-                std::cout << " head_dir: LEFT" << std::endl;
-                break;
-        }
 
-        std::cout << "headpos: "<< static_cast<uint16_t>(Model::Game::Snake::head_position.first) << ", "
-        << static_cast<uint16_t>(Model::Game::Snake::head_position.second) << std::endl;
-*/
+        #ifndef NDEBUG
+            std::cout << "tailpos: "<< static_cast<uint16_t>(Model::Game::Snake::tail_position.first)
+            << ", " << static_cast<uint16_t>(Model::Game::Snake::tail_position.second);
+            switch(Model::Game::Snake::head_direction)
+            {
+                case UP:
+                    std::cout << " head_dir: UP" << std::endl;
+                    break;
+                case RIGHT:
+                    std::cout << " head_dir: RIGHT" << std::endl;
+                    break;
+                case DOWN:
+                    std::cout << " head_dir: DOWN" << std::endl;
+                    break;
+                case LEFT:
+                    std::cout << " head_dir: LEFT" << std::endl;
+                    break;
+            }
+            std::cout << "headpos: "<< static_cast<uint16_t>(Model::Game::Snake::head_position.first) << ", "
+            << static_cast<uint16_t>(Model::Game::Snake::head_position.second) << std::endl;
+        #endif
+
     }
 
     ESection Gameplay::execute()

@@ -1,6 +1,6 @@
 #include "Snake.hpp"
 #include "Board.hpp"
-#include "../Controller/Controller.hpp"
+#include "GameCore.hpp"
 #include <windows.h>
 
 namespace Model
@@ -28,7 +28,8 @@ namespace Model
                 Position body_tile_pos = head_pos;
                 for(uint16_t i = 0; i < init_length - 1; i++)
                 {
-                    bool cut_tail = false;
+                    bool cut_tail = false;  //helps with cutting the tail off if we start with a tail
+                                            //that doesn't fit the board
                     switch(head_dir)
                     {
                         case UP:
@@ -97,7 +98,7 @@ namespace Model
                     return false;
 
                 if(new_position == Board::fruit_position)
-                    Controller::addPoint();
+                    addPoint();
 
                 else
                 {
@@ -129,29 +130,29 @@ namespace Model
 
             void changeDirection(EDirection new_direction)
             {
-                bool will_change = true;
+                //bool will_change = true;
                 if(new_direction != head_direction)
                 {
                     switch(new_direction)
                     {
                         case UP:
                             if(head_direction == DOWN)
-                                will_change = false;
+                                // = false;
                             break;
                         case RIGHT:
                             if(head_direction == LEFT)
-                                will_change = false;
+                                //will_change = false;
                             break;
                         case DOWN:
                             if(head_direction == UP)
-                                will_change = false;
+                                //will_change = false;
                             break;
                         case LEFT:
                             if(head_direction == RIGHT)
-                                will_change = false;
+                                //will_change = false;
                             break;
                     }
-                    if( will_change && ((new_direction == UP    && GetAsyncKeyState(VK_UP)) ||
+                    if( /*will_change && */((new_direction == UP && GetAsyncKeyState(VK_UP)) ||
                         (new_direction == RIGHT && GetAsyncKeyState(VK_RIGHT)) ||
                         (new_direction == DOWN  && GetAsyncKeyState(VK_DOWN)) ||
                         (new_direction == LEFT  && GetAsyncKeyState(VK_LEFT))))

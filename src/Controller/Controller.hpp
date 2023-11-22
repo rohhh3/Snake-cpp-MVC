@@ -16,7 +16,6 @@ namespace Controller
 
     void resetGameplay();
     bool moveSnake();
-    void addPoint();
     void handleUserInput();
     void changeDirection(EDirection direction);
     uint8_t getBoardWidth();

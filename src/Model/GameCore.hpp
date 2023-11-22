@@ -9,5 +9,6 @@ namespace Model
     {
         extern scoreInt player_score;
         void reset();
+        void addPoint();
     }
 }

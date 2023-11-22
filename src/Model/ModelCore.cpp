@@ -54,13 +54,11 @@ namespace Model
         Model::scoreboard.clear();
 
         std::ifstream file(Model::file_path);
-
-        if(!file.is_open())
-        {
-            std::cerr << "Error: Unable to open the scoreboard file." << std::endl;
-            return;
-        }
-
+            if(!file.is_open())
+            {
+                std::cerr << "Error: Unable to open the scoreboard file." << std::endl;
+                return;
+            }
         std::string line;
 
         while(std::getline(file, line))
@@ -74,7 +72,9 @@ namespace Model
             else
                 std::cerr << "Error: Invalid line format in the scoreboard file." << std::endl;
         }
-        //std::cout << "File loaded: " << file_path << std::endl;
+        #ifndef NDEBUG
+            std::cout << "File loaded: " << file_path << std::endl;
+        #endif
         file.close();
     }
 
@@ -109,6 +109,7 @@ namespace Model
         const std::string result    = audio_path + song_name;
         PlaySound(result.c_str(), NULL, SND_ASYNC | SND_LOOP);
     }
+
     void playGameplaySong()
     {
         const std::string song_name = "Joshua-McLean-Mountain-Trials.wav";

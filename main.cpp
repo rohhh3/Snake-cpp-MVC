@@ -5,7 +5,6 @@
 #include "src/View/Sections/NewGame.hpp"
 #include "src/View/Sections/Scores.hpp"
 
-
 int main()
 {
 
