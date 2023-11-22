@@ -13,7 +13,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="C:/Program Files/Tools/pdcurses38" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -34,7 +33,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Linker>
+			<Add option="-lwinmm" />
+		</Linker>
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Controller/AudioController.cpp" />
 		<Unit filename="src/Controller/Controller.cpp" />
 		<Unit filename="src/Controller/Controller.hpp" />
 		<Unit filename="src/Controller/GameController.cpp" />

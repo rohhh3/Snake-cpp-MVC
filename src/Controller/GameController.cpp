@@ -38,12 +38,6 @@ namespace Controller
         return Model::Game::Board::fruit_position;
     }
 
-    void addPoint()
-    {
-        Model::Game::player_score++;
-        Model::Game::Board::respawn_fruit(Model::Game::Snake::body);
-    }
-
     scoreInt getScore()
     {
         return Model::Game::player_score;

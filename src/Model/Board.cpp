@@ -1,4 +1,5 @@
 #include "Board.hpp"
+#include <random>
 
 namespace Model
 {

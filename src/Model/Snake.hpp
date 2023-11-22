@@ -2,7 +2,6 @@
 #include <map>
 #include "Position.hpp"
 #include "EDirection.hpp"
-#include "typedefs.hpp"
 
 namespace Model
 {
