@@ -48,19 +48,21 @@ namespace View
         if(number_of_scores_on_current_page == 0)
         {
             printHeader();
+            text = "";
+
             for(int i = 0; i < CONSOLE_WIDTH; i++)
-                std::cout << "-";
-            std::cout << std::endl;
+                text += "-";
+            text += "\n";
 
-            centerX(11);
-            std::cout << "High Scores" << std::endl;
+            text += giveSpaceToString(11);
+            text += "High Scores\n";
             for(int i = 0; i < CONSOLE_WIDTH; i++)
-                std::cout << "-";
-            std::cout << std::endl;
+                text += "-";
+            text += '\n';
 
-            centerX(13);
-            std::cout << "No scores yet" << std::endl;
-
+            text += giveSpaceToString(13);
+            text += "No scores yet\n";
+            std::cout << text;
             user_input = 0;
             while(user_input != '\b')
                 user_input = _getch();
@@ -84,8 +86,8 @@ namespace View
                 text += "High Scores\n";
                 for(int i = 0; i < CONSOLE_WIDTH; i++)
                     text += "-";
-                text += "\n";
-                /* \/ \/ \/ HIGH SCORES \/\/\/ */
+                text += '\n';
+                /* /\ /\ /\ HIGH SCORES /\ /\ /\ */
 
                 /* \/ \/ \/ COUNT NAME'S LENGTH  \/ \/ \/ */
                 uint16_t* names_lenghts = new uint16_t[scores_on_page.size()];
@@ -93,18 +95,18 @@ namespace View
                 for(uint16_t i = 0; i < scores_on_page.size(); i++)
                     names_lenghts[i] = scores_on_page[i].name.length();
 
-                /* \/\ /\ /\ COUNT NAME'S LENGTH  /\ /\ /\ */
-                /* PRINT SCORES */
+                /* /\ /\ /\ COUNT NAME'S LENGTH  /\ /\ /\ */
+
                 uint16_t itr = 0;
                 for(auto& i : scores_on_page)
                 {
                     uint16_t how_many_dots = 50 - names_lenghts[itr] - 11;
                     itr++;
-                    text += (CONSOLE_WIDTH / 2 - 18);
+                    text += giveSpaceToString(CONSOLE_WIDTH / 2 - 18);
                     text +=  i.name;
                     for(int j = 0; j < how_many_dots; j++)
                         text += ".";
-                    text += i.score + "\n";
+                    text += std::to_string(i.score) + '\n';
                 }
                 std::cout << text;
                 delete[] names_lenghts;
@@ -137,7 +139,6 @@ namespace View
                     backspace_pressed = true;
             }
         }
-
         system("cls");
         return MAIN_MENU;
     }

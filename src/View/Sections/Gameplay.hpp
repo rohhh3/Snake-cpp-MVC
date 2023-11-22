@@ -2,6 +2,7 @@
 #include "../Section.hpp"
 #include "../../Model/Snake.hpp"
 #include <map>
+#include <string>
 
 namespace View
 {

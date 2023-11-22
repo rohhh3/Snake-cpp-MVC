@@ -2,6 +2,7 @@
 #include "Board.hpp"
 #include "GameCore.hpp"
 #include <windows.h>
+#include <limits>
 
 namespace Model
 {

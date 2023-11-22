@@ -5,6 +5,7 @@
 #include <fstream>
 #include <windows.h>
 #include <mmsystem.h>
+
 namespace Model
 {
     std::vector<ScoreboardEntry> scoreboard;

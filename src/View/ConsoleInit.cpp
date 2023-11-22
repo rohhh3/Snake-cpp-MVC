@@ -12,7 +12,7 @@ namespace View
 
         rect.Top  = 0;
         rect.Left = 0;
-        rect.Right  = CONSOLE_WIDTH - 1;
+        rect.Right  = CONSOLE_WIDTH  - 1;
         rect.Bottom = CONSOLE_HEIGHT - 1;
 
         HWND consoleWindow = GetConsoleWindow();
