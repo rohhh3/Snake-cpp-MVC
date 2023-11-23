@@ -1,7 +1,8 @@
 #pragma once
-#include <map>
 #include "Position.hpp"
 #include "EDirection.hpp"
+#include <map>
+
 
 namespace Model
 {

@@ -1,5 +1,6 @@
 #pragma once
 #include "ESection.hpp"
+
 namespace View
 {
     class Section

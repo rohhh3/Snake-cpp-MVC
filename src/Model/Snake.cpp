@@ -30,7 +30,7 @@ namespace Model
                 for(uint16_t i = 0; i < init_length - 1; i++)
                 {
                     bool cut_tail = false;  //helps with cutting the tail off if we start with a tail
-                                            //that doesn't fit the board
+                                            //when doesn't fit the board
                     switch(head_dir)
                     {
                         case UP:

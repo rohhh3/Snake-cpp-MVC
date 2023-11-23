@@ -1,7 +1,7 @@
 #pragma once
 #include "../Model/ModelCore.hpp"
 #include "../Model/GameCore.hpp"
-
+#include "../keyCodes.hpp"
 
 namespace Controller
 {
