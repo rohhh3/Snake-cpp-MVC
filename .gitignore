@@ -33,5 +33,8 @@
 *.layout
 *.depend
 *.cbp
+*.pdf
+*.cscope_file_list
 obj/
 sounds/
+bin/Debug
