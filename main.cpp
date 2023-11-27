@@ -5,6 +5,11 @@
 #include "src/View/Sections/NewGame.hpp"
 #include "src/View/Sections/Scores.hpp"
 #include "src/View/Window/WindowInit.hpp"
+#include "src/View/Window/Sections/WindowGameplay.hpp"
+#include "src/View/Window/Sections/WindowHelp.hpp"
+#include "src/View/Window/Sections/WindowMainMenu.hpp"
+#include "src/View/Window/Sections/WindowNewGame.hpp"
+#include "src/View/Window/Sections/WindowScores.hpp"
 #include "src/View/ViewFunctions.hpp"
 #include <iostream>
 #include <conio.h>
@@ -70,7 +75,25 @@ int main()
                 }
                 break;
             case 1:
-                View::windowInit();
+                {
+                    View::windowInit();
+                    View::Section* current_section_object;
+                    View::ESection current_section = View::MAIN_MENU;
+                    while(current_section)
+                    {
+                        switch(current_section)
+                        {
+                            case View::MAIN_MENU: { current_section_object = new View::WindowMainMenu; break; }
+                            case View::GAMEPLAY:  { current_section_object = new View::WindowGameplay; break; }
+                            case View::SCORES:    { current_section_object = new View::WindowScores;   break; }
+                            case View::HELP:      { current_section_object = new View::WindowHelp;     break; }
+                            default: break;
+                        }
+                        current_section = current_section_object->execute();
+                        delete current_section_object;
+                    }
+                }
+
                 break;
             default:
                 return View::EXIT;
