@@ -53,7 +53,6 @@ namespace Model
     void loadScoreboard()
     {
         Model::scoreboard.clear();
-
         std::ifstream file(Model::file_path);
             if(!file.is_open())
             {

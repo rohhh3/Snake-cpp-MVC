@@ -4,16 +4,17 @@
 #include "src/View/Sections/MainMenu.hpp"
 #include "src/View/Sections/NewGame.hpp"
 #include "src/View/Sections/Scores.hpp"
+#include "src/View/Window/WindowInit.hpp"
 
 int main()
 {
 
     Controller::initGame();
     View::consoleInit();
-
+    View::windowInit();
+/*
     View::Section* current_section_object;
     View::ESection current_section = View::MAIN_MENU;
-
     while(current_section)
     {
         switch(current_section)
@@ -27,6 +28,6 @@ int main()
         current_section = current_section_object->execute();
         delete current_section_object;
     }
-
+*/
     return 0;
 }
