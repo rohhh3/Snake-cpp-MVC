@@ -13,6 +13,30 @@ namespace View
         title.setString("SNAKE GAME");
         title.setPosition((WINDOW_WIDTH - title.getGlobalBounds().width) / 2, 30.f);
 
+        option_new_game.setFont(font_default_text);
+        option_new_game.setCharacterSize(32);
+        option_new_game.setFillColor(sf::Color::White);
+        option_new_game.setString("New Game");
+        option_new_game.setPosition((WINDOW_WIDTH - option_new_game.getGlobalBounds().width) / 2, 155.f);
+
+        option_scores.setFont(font_default_text);
+        option_scores.setCharacterSize(32);
+        option_scores.setFillColor(sf::Color::White);
+        option_scores.setString("Scores");
+        option_scores.setPosition((WINDOW_WIDTH - option_scores.getGlobalBounds().width) / 2, 225.f);
+
+        option_help.setFont(font_default_text);
+        option_help.setCharacterSize(32);
+        option_help.setFillColor(sf::Color::White);
+        option_help.setString("Help");
+        option_help.setPosition((WINDOW_WIDTH - option_help.getGlobalBounds().width) / 2, 295.f);
+
+        option_exit.setFont(font_default_text);
+        option_exit.setCharacterSize(32);
+        option_exit.setFillColor(sf::Color::White);
+        option_exit.setString("Exit");
+        option_exit.setPosition((WINDOW_WIDTH - option_exit.getGlobalBounds().width) / 2, 365.f);
+
         button_size = sf::Vector2f(220.f, 50.f);
 
         new_game_button.setSize(button_size);
@@ -22,7 +46,7 @@ namespace View
 
         new_game_button.setFillColor(sf::Color::Blue);
         scores_button.setFillColor(sf::Color::Red);
-        help_button.setFillColor(sf::Color::Yellow);
+        help_button.setFillColor(sf::Color::Green);
         exit_button.setFillColor(sf::Color::Magenta);
 
         float button_gap = 20;
@@ -50,9 +74,16 @@ namespace View
 
             window.draw(title);
             window.draw(new_game_button);
+            window.draw(option_new_game);
+
             window.draw(scores_button);
+            window.draw(option_scores);
+
             window.draw(help_button);
+            window.draw(option_help);
+
             window.draw(exit_button);
+            window.draw(option_exit);
 
             window.display();
         }
