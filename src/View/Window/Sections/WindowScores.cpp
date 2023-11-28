@@ -1,4 +1,5 @@
 #include "WindowScores.hpp"
+#include "../resources.hpp"
 
 namespace View
 {

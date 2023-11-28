@@ -1,4 +1,5 @@
 #include "WindowHelp.hpp"
+#include "../resources.hpp"
 
 namespace View
 {

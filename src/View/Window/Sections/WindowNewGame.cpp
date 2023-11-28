@@ -1,4 +1,5 @@
 #include "WindowNewGame.hpp"
+#include "../resources.hpp"
 
 namespace View
 {

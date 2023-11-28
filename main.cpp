@@ -5,19 +5,19 @@
 #include "src/View/Sections/NewGame.hpp"
 #include "src/View/Sections/Scores.hpp"
 #include "src/View/Window/WindowInit.hpp"
+#include "src/View/ViewFunctions.hpp"
 #include "src/View/Window/Sections/WindowGameplay.hpp"
 #include "src/View/Window/Sections/WindowHelp.hpp"
 #include "src/View/Window/Sections/WindowMainMenu.hpp"
 #include "src/View/Window/Sections/WindowNewGame.hpp"
 #include "src/View/Window/Sections/WindowScores.hpp"
-#include "src/View/ViewFunctions.hpp"
 #include <iostream>
 #include <conio.h>
 int main()
 {
 
     Controller::initGame();
-    std::string menu_items[] = {"Console", "Window"};
+    std::string menu_items[] = {"Text mode", "Graphical mode"};
     int         option_index = 0;
     bool        is_selected  = true;
     while(is_selected)
@@ -52,52 +52,45 @@ int main()
             system("cls");
     }
 
-    switch(option_index)
+    if(option_index == 0)
     {
-            case 0:
-                {
-                    View::consoleInit();
-                    View::Section* current_section_object;
-                    View::ESection current_section = View::MAIN_MENU;
-                    while(current_section)
-                    {
-                        switch(current_section)
-                        {
-                            case View::MAIN_MENU: { current_section_object = new View::MainMenu; break; }
-                            case View::GAMEPLAY:  { current_section_object = new View::Gameplay; break; }
-                            case View::SCORES:    { current_section_object = new View::Scores;   break; }
-                            case View::HELP:      { current_section_object = new View::Help;     break; }
-                            default: break;
-                        }
-                        current_section = current_section_object->execute();
-                        delete current_section_object;
-                    }
-                }
-                break;
-            case 1:
-                {
-                    View::windowInit();
-                    View::Section* current_section_object;
-                    View::ESection current_section = View::MAIN_MENU;
-                    while(current_section)
-                    {
-                        switch(current_section)
-                        {
-                            case View::MAIN_MENU: { current_section_object = new View::WindowMainMenu; break; }
-                            case View::GAMEPLAY:  { current_section_object = new View::WindowGameplay; break; }
-                            case View::SCORES:    { current_section_object = new View::WindowScores;   break; }
-                            case View::HELP:      { current_section_object = new View::WindowHelp;     break; }
-                            default: break;
-                        }
-                        current_section = current_section_object->execute();
-                        delete current_section_object;
-                    }
-                }
-
-                break;
-            default:
-                return View::EXIT;
-                break;
+        View::consoleInit();
+        View::Section* current_section_object;
+        View::ESection current_section = View::MAIN_MENU;
+        while(current_section)
+        {
+            switch(current_section)
+            {
+                case View::MAIN_MENU: { current_section_object = new View::MainMenu; break; }
+                case View::GAMEPLAY:  { current_section_object = new View::Gameplay; break; }
+                case View::SCORES:    { current_section_object = new View::Scores;   break; }
+                case View::HELP:      { current_section_object = new View::Help;     break; }
+                default: break;
+            }
+            current_section = current_section_object->execute();
+            delete current_section_object;
+        }
     }
+
+    else
+    {
+        View::windowInit();
+        View::Section* current_section_object;
+        View::ESection current_section = View::MAIN_MENU;
+        while(current_section)
+        {
+            switch(current_section)
+            {
+                case View::MAIN_MENU: { current_section_object = new View::WindowMainMenu; break; }
+                case View::GAMEPLAY:  { current_section_object = new View::WindowGameplay; break; }
+                case View::SCORES:    { current_section_object = new View::WindowScores;   break; }
+                case View::HELP:      { current_section_object = new View::WindowHelp;     break; }
+                default: break;
+            }
+            current_section = current_section_object->execute();
+            delete current_section_object;
+        }
+    }
+
     return 0;
 }

@@ -1,4 +1,5 @@
 #include "WindowGameplay.hpp"
+#include "../resources.hpp"
 
 namespace View
 {

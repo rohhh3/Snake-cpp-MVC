@@ -86,6 +86,7 @@
 		<Unit filename="src/View/Window/Sections/WindowScores.hpp" />
 		<Unit filename="src/View/Window/WindowInit.cpp" />
 		<Unit filename="src/View/Window/WindowInit.hpp" />
+		<Unit filename="src/View/Window/resources.cpp" />
 		<Unit filename="src/View/Window/resources.hpp" />
 		<Unit filename="src/View/resources.hpp" />
 		<Unit filename="src/keyCodes.hpp" />
