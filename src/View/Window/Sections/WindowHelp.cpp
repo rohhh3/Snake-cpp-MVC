@@ -1,6 +1,7 @@
 #include "WindowHelp.hpp"
 #include "../resources.hpp"
-
+#include <iostream>
+#include <conio.h>
 namespace View
 {
     WindowHelp::WindowHelp()
@@ -12,6 +13,8 @@ namespace View
 
     ESection WindowHelp::execute()
     {
-        return MAIN_MENU;
+        std::cout << "I'm in help section";
+        getch();
+        return EXIT;
     }
 }

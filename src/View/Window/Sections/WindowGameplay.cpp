@@ -1,6 +1,7 @@
 #include "WindowGameplay.hpp"
 #include "../resources.hpp"
-
+#include <iostream>
+#include <conio.h>
 namespace View
 {
     WindowGameplay::WindowGameplay()
@@ -12,7 +13,9 @@ namespace View
 
     ESection WindowGameplay::execute()
     {
-        return MAIN_MENU;
+        std::cout << "I'm in gameplay section";
+        getch();
+        return EXIT;
     }
 }
 
