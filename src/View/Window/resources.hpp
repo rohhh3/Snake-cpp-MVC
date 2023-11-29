@@ -12,4 +12,5 @@ namespace View
     extern sf::Font         font_title;
     extern sf::Font         font_default_text;
     extern sf::Font         font_game_over;
+    extern sf::Text         title_window;
 }

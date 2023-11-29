@@ -9,7 +9,6 @@
 #include "src/View/Window/Sections/WindowGameplay.hpp"
 #include "src/View/Window/Sections/WindowHelp.hpp"
 #include "src/View/Window/Sections/WindowMainMenu.hpp"
-#include "src/View/Window/Sections/WindowNewGame.hpp"
 #include "src/View/Window/Sections/WindowScores.hpp"
 #include <iostream>
 #include <conio.h>

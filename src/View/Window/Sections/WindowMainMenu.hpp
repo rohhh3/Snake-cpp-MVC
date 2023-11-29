@@ -6,7 +6,6 @@ namespace View
     class WindowMainMenu : public Section
     {
         private:
-            sf::Text     title;
             sf::Text     option_new_game;
             sf::Text     option_scores;
             sf::Text     option_help;

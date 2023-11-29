@@ -13,8 +13,19 @@ namespace View
 
     ESection WindowScores::execute()
     {
-        std::cout << "I'm in scores section";
-        getch();
-        return EXIT;
+        while(window.isOpen())
+        {
+            while(window.pollEvent(event))
+            {
+                if(event.type == sf::Event::Closed)
+                    window.close();
+            }
+
+            window.clear(sf::Color::Black);
+
+            window.draw(title_window);
+
+            window.display();
+        }
     }
 }

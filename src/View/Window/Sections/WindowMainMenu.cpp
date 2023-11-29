@@ -1,20 +1,10 @@
 #include "WindowMainMenu.hpp"
 #include "../resources.hpp"
-#include <iostream>
 
 namespace View
 {
     WindowMainMenu::WindowMainMenu()
     {
-        //Title
-        title.setFont(font_title);
-        title.setCharacterSize(64);
-        title.setFillColor(sf::Color::Red);
-        title.setOutlineThickness(2.f);
-        title.setOutlineColor(sf::Color::White);
-        title.setString("SNAKE GAME");
-        title.setPosition((WINDOW_WIDTH - title.getGlobalBounds().width) / 2, 30.f);
-
         //New Game
         option_new_game.setFont(font_default_text);
         option_new_game.setCharacterSize(32);
@@ -104,15 +94,13 @@ namespace View
                         */
                     }
                     else if(event.mouseButton.button == sf::Mouse::Right)
-                    {
                         system("cls");
-                    }
                 }
             }
 
             window.clear(sf::Color::Black);
 
-            window.draw(title);
+            window.draw(title_window);
             window.draw(new_game_button);
             window.draw(option_new_game);
 
@@ -127,5 +115,6 @@ namespace View
 
             window.display();
         }
+        return EXIT;
     }
 }
