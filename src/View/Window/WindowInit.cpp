@@ -20,5 +20,14 @@ namespace View
         title_window.setOutlineColor(sf::Color::White);
         title_window.setString("SNAKE GAME");
         title_window.setPosition((WINDOW_WIDTH - title_window.getGlobalBounds().width) / 2, 30.f);
+
+        //Back button for help and high scores sections
+        back_button.setSize(sf::Vector2f(120.f, 50.f));
+        back_text.setFont(font_default_text);
+        back_text.setCharacterSize(32);
+        back_text.setFillColor(sf::Color::Black);
+        back_text.setOutlineThickness(2.f);
+        back_text.setOutlineColor(sf::Color::White);
+        back_text.setString("< BACK");
     }
 }

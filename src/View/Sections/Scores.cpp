@@ -97,23 +97,21 @@ namespace View
 
                 /* /\ /\ /\ COUNT NAME'S LENGTH  /\ /\ /\ */
 
-                uint16_t itr = 0;
-                for(auto& i : scores_on_page)
+                for(int i = 0; i < scores_on_page.size(); i++)
                 {
-                    uint16_t how_many_dots = 50 - names_lenghts[itr] - 11;
-                    itr++;
+                    uint16_t how_many_dots = 50 - names_lenghts[i] - 11;
                     text += giveSpaceToString(CONSOLE_WIDTH / 2 - 18);
-                    text +=  i.name;
+                    text +=  scores_on_page[i].name;
                     for(int j = 0; j < how_many_dots; j++)
                         text += ".";
-                    text += std::to_string(i.score) + '\n';
+                    text += std::to_string(scores_on_page[i].score) + '\n';
                 }
                 std::cout << text;
                 delete[] names_lenghts;
                 setCursorPosition((CONSOLE_WIDTH / 2 ) - 4, 25);
                 std::cout << "< " << current_page + 1 << "/" << total_pages + 1 << " >" << std::endl;
 
-                user_input = _getch();
+                user_input = getch();
                 if(user_input != '\b')
                 {
                     switch(user_input)

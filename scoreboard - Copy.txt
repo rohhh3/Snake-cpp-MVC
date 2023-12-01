@@ -1,0 +1,15 @@
+witam,2800
+kubek,2752
+Antek,2707
+dzieki,2546
+adam,1901
+Zephyr,1899
+Quasar,1796
+Luna,1682
+Nimbus,1405
+Aether,1105
+Flux,974
+Solstice,868
+Vortex,756
+Ember,662
+Cipher,584

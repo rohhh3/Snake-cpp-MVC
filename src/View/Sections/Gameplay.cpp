@@ -133,6 +133,7 @@ namespace View
                             std::cin >> player_name;
                             centerX(21);
                             std::cout << player_name <<" score has been saved!" << std::endl;
+                            //check player_name length - TO DO
                             Controller::addScoreboardEntry(player_name, Controller::getScore());
                             Controller::saveScoreboard();
                             player_name = "";
