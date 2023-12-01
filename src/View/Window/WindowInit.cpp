@@ -4,7 +4,7 @@ namespace View
 {
     void windowInit()
     {
-        window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Snake Game");
+        window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Snake Game", sf::Style::Titlebar | sf::Style::Close);
         window.setFramerateLimit(30);
 
         //Font loading

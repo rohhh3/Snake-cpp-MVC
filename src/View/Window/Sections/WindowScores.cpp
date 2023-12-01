@@ -43,13 +43,11 @@ namespace View
 
         horizontal_rect.setSize(sf::Vector2f(WINDOW_WIDTH * 0.8, 2.f));
         horizontal_rect.setPosition((WINDOW_WIDTH - horizontal_rect.getGlobalBounds().width) / 2, high_scores_text.getPosition().y + 50);
-        //horizontal_rect.setFillColor(sf::Color::White);
 
         if(number_of_scores_on_current_page_data == 0)
         {
             no_scores_text.setFont(font_default_text);
             no_scores_text.setCharacterSize(28);
-            //no_scores_text.setFillColor(sf::Color::White);
             no_scores_text.setString("No scores yet");
             no_scores_text.setPosition((WINDOW_WIDTH - no_scores_text.getGlobalBounds().width) / 2, horizontal_rect.getPosition().y + 20);
         }
@@ -65,12 +63,10 @@ namespace View
             {
                 player_name[i].setFont(font_default_text);
                 player_name[i].setCharacterSize(28);
-                //player_name[i].setFillColor(sf::Color::White);
                 player_name[i].setPosition(horizontal_rect.getPosition().x
                                            , horizontal_rect.getPosition().y + 10 + horizontal_rect.getGlobalBounds().height + (i * 47));
                 scores[i].setFont(font_default_text);
                 scores[i].setCharacterSize(28);
-                //scores[i].setFillColor(sf::Color::White);
                 scores[i].setPosition(scores[i].getPosition().x, player_name[i].getPosition().y);
             }
 
@@ -87,21 +83,21 @@ namespace View
             sign_left.setFont(font_default_text);
             sign_left.setCharacterSize(48);
             sign_left.setString("<");
-            sign_left.setPosition(go_left_button.getPosition().x, go_left_button.getPosition().y);
+            sign_left.setPosition(horizontal_rect.getPosition().x + horizontal_rect.getGlobalBounds().width / 2 * 0.8
+                                       , vertical_rect.getPosition().y + vertical_rect.getGlobalBounds().height);
 
             sign_right.setFont(font_default_text);
             sign_right.setCharacterSize(48);
             sign_right.setString(">");
-            sign_right.setPosition(go_right_button.getPosition().x, go_right_button.getPosition().y);
+            sign_right.setPosition(horizontal_rect.getPosition().x + horizontal_rect.getGlobalBounds().width / 2 * 1.08
+                                        , vertical_rect.getPosition().y + vertical_rect.getGlobalBounds().height);
 
             page_info.setFont(font_default_text);
             page_info.setCharacterSize(24);
-            page_info.setString("1/10");
             page_info.setPosition(go_left_button.getPosition().x + go_left_button.getGlobalBounds().width
                                   , go_left_button.getPosition().y + go_left_button.getGlobalBounds().height / 4);
         }
         updateVisibleScores();
-
     }
 
     WindowScores::~WindowScores(){ }
@@ -110,6 +106,7 @@ namespace View
     {
         while(window.isOpen())
         {
+            page_info.setString(std::to_string(current_page_data + 1) + "/" + std::to_string(total_pages_data + 1));
             while(window.pollEvent(event))
             {
                 if(event.type == sf::Event::Closed)
@@ -121,11 +118,24 @@ namespace View
                             return MAIN_MENU;
                         else if(go_left_button.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
                         {
-                            getch();
+                            std::cout << "go left button clicked" << std::endl;
+                            current_page_data -= 1;
+                            if(current_page_data < 0)
+                                current_page_data = total_pages_data;
+                            updateScoresOnCurrentPageData();
+                            updateVisibleScores();
+
                         }
                         else if(go_right_button.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
                         {
-                            getch();
+                            std::cout << "go right button clicked" << std::endl;
+                            updateScoresOnCurrentPageData();
+                            updateVisibleScores();
+                            current_page_data += 1;
+                            if(current_page_data > total_pages_data)
+                                current_page_data = 0;
+                            updateScoresOnCurrentPageData();
+                            updateVisibleScores();
                         }
                 }
             }

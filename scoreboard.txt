@@ -13,3 +13,15 @@ Solstice,868
 Vortex,756
 Ember,662
 Cipher,584
+sss,12
+ddd,11
+bbb,10
+aaa,9
+eee,8
+www,7
+qqq,6
+ooo,5
+iii,4
+ppp,3
+yyy,2
+ttt,1
