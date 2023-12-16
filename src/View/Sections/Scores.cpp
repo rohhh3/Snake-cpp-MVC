@@ -97,7 +97,7 @@ namespace View
 
                 /* /\ /\ /\ COUNT NAME'S LENGTH  /\ /\ /\ */
 
-                for(int i = 0; i < scores_on_page.size(); i++)
+                for(uint16_t i = 0; i < scores_on_page.size(); i++)
                 {
                     uint16_t how_many_dots = 50 - names_lenghts[i] - 11;
                     text += giveSpaceToString(CONSOLE_WIDTH / 2 - 18);

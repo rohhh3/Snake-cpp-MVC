@@ -2,7 +2,7 @@
 #include "../Model/ModelCore.hpp"
 #include "../Model/GameCore.hpp"
 #include "../keyCodes.hpp"
-
+#include "../Model/Board.hpp"
 namespace Controller
 {
     void initGame();
@@ -18,8 +18,17 @@ namespace Controller
     bool moveSnake();
     void handleUserInput();
     void changeDirection(EDirection direction);
-    uint8_t getBoardWidth();
-    uint8_t getBoardHeight();
+
+    constexpr uint8_t getBoardWidth()
+    {
+        return Model::Game::Board::WIDTH;
+    }
+
+    constexpr uint8_t getBoardHeight()
+    {
+        return Model::Game::Board::HEIGHT;
+    }
+
     scoreInt getScore();
     Position getFruitPosition();
     std::map<Position, EDirection> getSnake();

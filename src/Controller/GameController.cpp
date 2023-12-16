@@ -22,16 +22,6 @@ namespace Controller
         return Model::Game::Snake::body;
     }
 
-    uint8_t getBoardWidth()
-    {
-        return Model::Game::Board::WIDTH;
-    }
-
-    uint8_t getBoardHeight()
-    {
-        return Model::Game::Board::HEIGHT;
-    }
-
     Position getFruitPosition()
     {
         return Model::Game::Board::fruit_position;

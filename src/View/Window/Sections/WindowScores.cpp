@@ -114,6 +114,7 @@ namespace View
                 else if(event.type == sf::Event::MouseButtonPressed)
                 {
                     if(event.mouseButton.button == sf::Mouse::Left)
+                    {
                         if(back_button.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
                             return MAIN_MENU;
                         else if(go_left_button.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
@@ -137,6 +138,8 @@ namespace View
                             updateScoresOnCurrentPageData();
                             updateVisibleScores();
                         }
+                    }
+
                 }
             }
 
