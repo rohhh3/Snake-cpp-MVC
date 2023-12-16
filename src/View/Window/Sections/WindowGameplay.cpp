@@ -3,6 +3,7 @@
 #include "../../../Controller/Controller.hpp"
 #include <iostream>
 #include <conio.h>
+#include <windows.h>
 namespace View
 {
     WindowGameplay::WindowGameplay()
@@ -60,35 +61,38 @@ namespace View
     {
         while(window.isOpen())
         {
+            Controller::moveSnake();
             while(window.pollEvent(event))
             {
                 if(event.type == sf::Event::Closed)
                     window.close();
                 if(event.type == sf::Event::KeyPressed)
                 {
-                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && Controller::getDirection() != RIGHT)
                     {
                         Controller::changeDirection(LEFT);
                         Controller::moveSnake();
                     }
 
-                    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+                    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && Controller::getDirection() != LEFT)
                     {
+
                         Controller::changeDirection(RIGHT);
                         Controller::moveSnake();
                     }
 
-                    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && Controller::getDirection() != DOWN)
                     {
                         Controller::changeDirection(UP);
                         Controller::moveSnake();
                     }
 
-                    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && Controller::getDirection() != UP)
                     {
                         Controller::changeDirection(DOWN);
                         Controller::moveSnake();
                     }
+
                 }
             }
             rebuildSnake(); //potem usunac

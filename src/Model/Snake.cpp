@@ -162,12 +162,6 @@ namespace Model
                     }
                 }
             }
-
-            EDirection getDirection()
-            {
-                return head_direction;
-            }
-
         }
     }
 }
