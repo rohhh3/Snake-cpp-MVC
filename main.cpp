@@ -12,6 +12,7 @@
 #include "src/View/Window/Sections/WindowScores.hpp"
 #include <iostream>
 #include <conio.h>
+
 int main()
 {
 
@@ -24,31 +25,33 @@ int main()
         View::centerX(12);
         std::cout << "Choose mode:\n";
         for(int i = 0; i < 2; ++i)
+        {
+            int padding = (View::CONSOLE_WIDTH - menu_items[i].length()) / 2;
+            if(i == option_index)
             {
-                int padding = (View::CONSOLE_WIDTH - menu_items[i].length()) / 2;
-                if(i == option_index)
-                {
-                    View::setConsoleColor(4); // set red color for selected item
-                    std::cout << std::string(padding, ' ') <<  "> " << menu_items[i] << std::endl;
-                    View::resetConsoleColor(); // back to default color
-                }
-                else
-                    std::cout << std::string(padding, ' ') << "  " << menu_items[i] << std::endl;
+                View::setConsoleColor(4); // set red color for selected item
+                std::cout << std::string(padding, ' ') <<  "> " << menu_items[i] << std::endl;
+                View::resetConsoleColor(); // back to default color
             }
-            char key = getch();
-            switch(key)
-            {
-                case KEY_UP:
-                    option_index = (option_index == 0 ? 1 : option_index - 1);
-                    break;
-                case KEY_DOWN:
-                    option_index = (option_index == 1 ? 0 : option_index + 1);
-                    break;
-                case KEY_ENTER:
-                    is_selected = false;
-                    break;
-            }
-            system("cls");
+            else
+                std::cout << std::string(padding, ' ') << "  " << menu_items[i] << std::endl;
+        }
+
+        char key = getch();
+        switch(key)
+        {
+            case KEY_UP:
+                option_index = (option_index == 0 ? 1 : option_index - 1);
+                break;
+            case KEY_DOWN:
+                option_index = (option_index == 1 ? 0 : option_index + 1);
+                break;
+            case KEY_ENTER:
+                is_selected = false;
+                break;
+        }
+
+        system("cls");
     }
 
     if(option_index == 0)

@@ -8,7 +8,7 @@ namespace Model
 {
     const  uint16_t MAX_SCOREBOARD_SIZE = 1000;
     extern std::vector<ScoreboardEntry> scoreboard;
-    const  std::string file_path  = "scoreboard.txt";
+    const  std::string file_path  = "scoreboard - Copy.txt";
     const  std::string audio_path = "sounds/";
 
     bool doesScoreQualify(scoreInt fresh_score);

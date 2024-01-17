@@ -68,6 +68,8 @@ namespace View
             }
             std::cout << "headpos: "<< static_cast<uint16_t>(Model::Game::Snake::head_position.first) << ", "
             << static_cast<uint16_t>(Model::Game::Snake::head_position.second) << std::endl;
+            std::cout << "fruit x: " << static_cast<uint16_t>(fruit_position.first)
+            << " fruit y: " << static_cast<uint16_t>(fruit_position.second);
         #endif
 
     }

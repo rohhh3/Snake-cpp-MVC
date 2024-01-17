@@ -131,36 +131,37 @@ namespace Model
 
             void changeDirection(EDirection new_direction)
             {
-                //bool will_change = true;
+                bool will_change = true;
                 if(new_direction != head_direction)
                 {
                     switch(new_direction)
                     {
                         case UP:
                             if(head_direction == DOWN)
-                                // = false;
+                                will_change = false;
                             break;
                         case RIGHT:
                             if(head_direction == LEFT)
-                                //will_change = false;
+                                will_change = false;
                             break;
                         case DOWN:
                             if(head_direction == UP)
-                                //will_change = false;
+                                will_change = false;
                             break;
                         case LEFT:
                             if(head_direction == RIGHT)
-                                //will_change = false;
+                                will_change = false;
                             break;
                     }
-                    if( /*will_change && */((new_direction == UP && GetAsyncKeyState(VK_UP)) ||
-                        (new_direction == RIGHT && GetAsyncKeyState(VK_RIGHT)) ||
-                        (new_direction == DOWN  && GetAsyncKeyState(VK_DOWN)) ||
-                        (new_direction == LEFT  && GetAsyncKeyState(VK_LEFT))))
-                    {
+
+                    if(will_change && (new_direction == UP  || new_direction == RIGHT  || new_direction == DOWN  || new_direction == LEFT))
                         head_next_direction = new_direction;
-                    }
+
                 }
+            }
+            float calculateSnakeSpeed(scoreInt score)
+            {
+                return (score * 0.025f);
             }
         }
     }

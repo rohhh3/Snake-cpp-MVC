@@ -1,6 +1,7 @@
 #pragma once
 #include "Position.hpp"
 #include "EDirection.hpp"
+#include "typedefs.hpp"
 #include <map>
 
 
@@ -20,6 +21,7 @@ namespace Model
             void reset(Position head_pos, EDirection head_dir, uint16_t init_length);
             bool move();
             void changeDirection(EDirection new_direction);
+            float calculateSnakeSpeed(scoreInt score);
         }
     }
 

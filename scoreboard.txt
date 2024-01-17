@@ -25,3 +25,4 @@ iii,4
 ppp,3
 yyy,2
 ttt,1
+test input ok,0
